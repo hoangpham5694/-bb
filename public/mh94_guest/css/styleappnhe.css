@@ -106,7 +106,7 @@ div#header {
   border-color: white;
 }
 .banner-panel, .banner-text{
-    padding: 0;
+    
 }
 .carousel-indicators {
     bottom: 10px;
@@ -163,12 +163,16 @@ a {
     padding: 0;
     min-height: 100%;
 }
-.ui.three.item.menu.orange-menu {
+.ui.three.item.menu.orange-menu  {
     margin-top: 10px !important;
     margin-bottom: 0px !important;
-    background-color: #cce2ff;
-    color: #333;
-    line-height: 50px;
+    
+}
+.ui.three.item.menu.orange-menu ul li{
+    width: 33.33333333333333333333333%;
+}
+.ui.three.item.menu.orange-menu ul li a{
+    border-radius: 0;
 }
 .ui.item.menu, .ui.item.menu .item {
     width: 100%;
@@ -217,10 +221,11 @@ i.glyphicon.glyphicon-calendar, .glyphicon-heart, .glyphicon-comment,.glyphicon-
     font-size: 13pt;
     background-color: #fff;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-
+    position: relative;
+    height: 250px;
 }
 .row.game-grid.mainContent {
-    padding-top: 60px;
+    padding-top: 30px;
 
 }
 
@@ -256,20 +261,29 @@ i.glyphicon.glyphicon-calendar, .glyphicon-heart, .glyphicon-comment,.glyphicon-
 }
 
 }
-
+.total-panel .center img{
+    width:100%;
+  
+    max-height: 140px;
+    display: block;
+    margin: 0 auto;
+}
 .center img {
-    width: 100%;
+    
 }
 .content.setMaxHeight .header {
-    padding: 10px 10px 30px 10px;
+    padding: 10px 10px 0 10px ;
 }
 a:hover{
   text-decoration: none !important;
 }
 .extra.content.small-text.orange-text {
+    position: absolute;
+    bottom:0;
+    width:100%;
     font-size: 7pt;
-    padding: 0px 10px 25px 10px;
-    width: auto;
+    padding: 0px 12px 10px 12px;
+   
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;

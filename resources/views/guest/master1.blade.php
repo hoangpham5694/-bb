@@ -4,16 +4,22 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="csrf-token" content="{{ Session::token() }}"> 
-	<title></title>
+	@yield('title')
 
-	<link rel="stylesheet" href="{!! asset('public/mh94_guest/css/bootstrap.min.css')!!}">
-	<link rel="stylesheet" href="{!! asset('public/mh94_guest/css/styleappnhe.css')!!}">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  	<script src="<?php echo asset('public/mh94_guest/js/lib/bootstrap.min.js') ; ?>"></script>
-  	<script type="text/javascript" src=<?php echo asset('public/mh94_guest/js/lib/html2canvas.js') ; ?>> </script>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel    ="stylesheet" href="{!! asset('public/mh94_guest/css/bootstrap.min.css')!!}">
+		<link rel    ="stylesheet" href="{!! asset('public/mh94_guest/css/styleappnhe.css')!!}">
+		<script src  ="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src  ="<?php echo asset('public/mh94_guest/js/lib/bootstrap.min.js') ; ?>"></script>
+		<script type ="text/javascript" src=<?php echo asset('public/mh94_guest/js/lib/html2canvas.js') ; ?>> </script>
+		<script type ="text/javascript" src=<?php echo asset('public/mh94_guest/js/lib/angular.min.js') ; ?> > </script>
+		<script  src=<?php echo asset('public/mh94_guest/js/app.js') ; ?> > </script>
+		<script  src=<?php echo asset('public/mh94_guest/js/controller/AppPlayController.js') ; ?>> </script>
+		<script  src=<?php echo asset('public/mh94_guest/js/controller/AppController.js') ; ?>> </script>
+		<script  src=<?php echo asset('public/mh94_guest/js/myscript.js') ; ?>> </script>
+
+		<meta name   ="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
-<body>
+<body ng-app="my-app">
 	<div id="header">
 		<div class="container">
 			<div class="logo col-md-2 col-sm-3 col-xs-12">
@@ -40,9 +46,9 @@
 	</div>
 	<div id="content">
 		<div class="container">
+		@yield('content')
 	
-	
-	</div>
+		</div>
 	</div>
 	<div id="footer">
 		<div class="fa-footer container">
@@ -57,5 +63,6 @@
 	<div id="btn-goto-top" class="ui icon orange button scrollToTop " style="display: block;">
     <i class="glyphicon glyphicon-menu-up"></i>
 </div>
+
 </body>
 </html>

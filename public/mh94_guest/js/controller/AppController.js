@@ -4,7 +4,7 @@ app.controller('AppController', function($scope ,$http,$location, API){
 		$http.get(url).then(function successCallback (response){
 		console.log(response);
 		$scope.data =  response.data;
-		if(response.data.length < 10){
+		if(response.data.length < 12){
   			page--;
   			$scope.message = "Hết dữ liệu vui lòng quay lại";
   		}
@@ -26,7 +26,7 @@ app.controller('AppController', function($scope ,$http,$location, API){
   		}) ;
 	}
 	getAppRandom();
-	//$scope.name="hoang";
+	$scope.name="hoang";
 	console.log(page);
 	getApp(API + "listapp/"+ page)
 	$scope.listApp = function(state){
