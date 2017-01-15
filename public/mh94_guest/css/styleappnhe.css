@@ -493,3 +493,6 @@ img.img-panel {
     float: left;
     width: 40%;
 }
+.sidebar .apps .sidebar-apps .img-panel img{
+    width:100%;
+}

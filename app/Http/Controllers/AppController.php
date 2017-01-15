@@ -101,7 +101,13 @@ class AppController extends Controller
     }
     public function getListAppRandom(){
         $numberRecord = 12;
-        $app = App::inRandomOrder()->limit($numberRecord)->offset(0)->get();;
+        $app = App::select('id','title','view','image','appurl','created_at')->inRandomOrder()->limit($numberRecord)->offset(0)->get();;
+        return json_encode($app);
+    }
+    public function getSearchApp($keyword){
+        $keyword = "%".$keyword."%";
+        $numberRecord = 10;
+        $app = App::select('id','title','view','image','appurl','created_at')->where('title', 'LIKE', $keyword)->limit($numberRecord)->offset(0)->get();;
         return json_encode($app);
     }
 
