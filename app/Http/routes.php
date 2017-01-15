@@ -63,3 +63,4 @@ Route::get('facebook/redirect', ['as'=>'redirectToProvider', 'uses' => 'Auth\Soc
 Route::get('facebook/callback', ['as'=>'handleProviderCallback', 'uses' => 'Auth\SocialController@handleProviderCallback']);
 Route::get('listapp/{page}',['as'=>'getListApp', 'uses' => 'AppController@getAppListWithPage'])->where('page','[0-9]+');
 Route::get('listapprandom',['as'=> 'getListAppRandom', 'uses' => 'AppController@getListAppRandom']);
+Route::get('listhot/{page}',['as'=> 'getListHot', 'uses'=> 'AppController@getListHot'])->where('id','[0-9]+');

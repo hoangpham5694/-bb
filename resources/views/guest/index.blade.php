@@ -104,7 +104,7 @@
 						<div class="ui special cardsui special cards">
 							<a href="#" target="_blank"></a>
 							<div class="card">
-								<a href="playapp/{% app.id %}/{% app.slug %}.html" target="_blank">								
+								<a href="playapp/{% app.id %}/{% app.slug %}.html" >								
 									<div class="center">
 									<img src="{!! asset('public/mh94_upload/appimages')!!}/{% app.image %}" alt="">
 								</div>
@@ -114,7 +114,7 @@
 									<a href="#" target="_blank"></a>
 									<div class="header">
 										<a href="#" target="_blank"></a>
-										<a href="playapp/{% app.id %}/{% app.slug %}.html" target="_blank">{% app.title %}</a>
+										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title %}</a>
 									</div>
 									
 								</div>
@@ -134,12 +134,46 @@
 						</div>
 					</div>
 			<div class="clear-fix"></div>
-				
-				</div>
+			</div>
     </div>
     <div id="hot" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+           		<div class="row game-grid mainContent" >
+					<div class ="col-md-3 col-sm-4 col-xs-6" ng-repeat="app in datahot" >
+						<a href="#" target="_blank"></a>
+						<div class="ui special cardsui special cards">
+							<a href="#" target="_blank"></a>
+							<div class="card">
+								<a href="playapp/{% app.id %}/{% app.slug %}.html">								
+									<div class="center">
+									<img src="{!! asset('public/mh94_upload/appimages')!!}/{% app.image %}" alt="">
+								</div>
+								</a>
+
+								<div class="content setMaxHeight">
+									<a href="#" target="_blank"></a>
+									<div class="header">
+										<a href="#" target="_blank"></a>
+										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title %}</a>
+									</div>
+									
+								</div>
+								<div class="extra content small-text orange-text">
+									<hr>
+									<div class="pull-left">
+					      			<i class="glyphicon glyphicon-thumbs-up"></i> 31,300    
+					      			<i class="glyphicon glyphicon-heart"></i> 31,300   
+					      			<i class="glyphicon glyphicon-comment"></i> 31,300  
+
+					      		</div>
+					      		<div class="pull-right">
+					      			<i class ="glyphicon glyphicon-calendar"></i> 22 hours ago
+					      		</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			<div class="clear-fix"></div>
+			</div>
     </div>
     <div id="rand" class="tab-pane fade">
       <h3>Menu 2</h3>

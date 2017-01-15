@@ -90,13 +90,13 @@ class AppController extends Controller
     public function getAppListWithPage($page){
         $numberRecord= 12;
         $vitri =($page -1 ) * $numberRecord;
-        $data = App::orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get();
+        $data = App::select('id','title','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get();
         return  json_encode($data);
     }
-    public function getAppListNewWithPage($page){
+    public function getListHot($page){
         $numberRecord= 12;
         $vitri =($page -1 ) * $numberRecord;
-        $data = App::orderBy('view','DESC')->limit($numberRecord)->offset($vitri)->get();
+        $data = App::select('id','title','view','image','appurl','created_at')->orderBy('view','DESC')->limit($numberRecord)->offset($vitri)->get();
         return  json_encode($data);
     }
     public function getListAppRandom(){
@@ -104,4 +104,5 @@ class AppController extends Controller
         $app = App::inRandomOrder()->limit($numberRecord)->offset(0)->get();;
         return json_encode($app);
     }
+
 }
