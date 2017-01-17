@@ -261,6 +261,24 @@ i.glyphicon.glyphicon-calendar, .glyphicon-heart, .glyphicon-comment,.glyphicon-
 }
 
 }
+.search-panel{
+    position: relative;
+
+}
+.search-panel .search-result{
+    transition: all linear 0.5s;
+    position: absolute;
+    top:30px;
+    background-color: white;
+    width: 100%;
+    
+    z-index: 1;
+}
+.search-panel .search-result ul li{
+    list-style-type: none;
+
+}
+
 .total-panel .center img{
     width:100%;
   

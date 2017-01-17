@@ -46,6 +46,7 @@ app.controller('AppController', function($scope ,$http,$location, API){
 	$scope.name="hoang";
 	console.log(page);
 	getApp(API + "listapp/"+ page)
+
 	$scope.listApp = function(state){
 
 		//console.log("click");
@@ -68,6 +69,31 @@ app.controller('AppController', function($scope ,$http,$location, API){
 
 
 	};
+	$scope.searchfunc = function(){
+		var key = $scope.keyvalue;
+		var mySearchResult = angular.element( document.querySelector( '.search-result' ) );
+		if(key.length >0){
+			mySearchResult.css('display','block');
+			$http.get(API+'listsearch/'+ key).then(function successCallback (response){
+			console.log(response);
+			
+			if(response.data.length >0 ){
+				$scope.dataSearch =  response.data;
+			}
+			else{
+				$scope.dataSearch =  null;
+				$scope.messageSearch = "Không có kết quả";
+			}
+			}  , function errorCallback(response) {
+				// called asynchronously if an error occurs
+				// or server returns response with an error status.
+			}) ;
+		}else{
+			mySearchResult.css('display','none');
+		}
+		
+
+	}
 
 		
 
