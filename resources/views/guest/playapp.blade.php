@@ -175,15 +175,16 @@
 	 			<ul class="sidebar-apps">
 								<li ng-repeat="app in dataRandom" >
 									<a href="{!! url('playapp') !!}/{% app.id %}/{% app.slug %}.html" >	
-								<div class="img-panel">
+								<div class="img-panel col-sm-5 ">
 									<img src="{!! asset('public/mh94_upload/appimages')!!}/{% app.image %}" alt="">
 								</div>								
-										<div class="info-panel">
+										<div class="info-panel col-sm-7">
 											<p>{% app.title %}</p>
-											<hr>
+											
 										</div>
-									<div class="clear-fix"></div>
+									<div class="clearfix"></div>
 									</a>
+									<hr>
 								</li>
 							
 					</ul>	

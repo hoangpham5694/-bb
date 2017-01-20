@@ -65,3 +65,5 @@ Route::get('listapp/{page}',['as'=>'getListApp', 'uses' => 'AppController@getApp
 Route::get('listapprandom',['as'=> 'getListAppRandom', 'uses' => 'AppController@getListAppRandom']);
 Route::get('listhot/{page}',['as'=> 'getListHot', 'uses'=> 'AppController@getListHot'])->where('id','[0-9]+');
 Route::get('listsearch/{keyword}', ['as' => 'getlistSearch', 'uses' => "AppController@getSearchApp"]);
+Route::get('list5new',['as'=>'getList5New', 'uses'=> 'AppController@getList5New']);
+Route::get('lastapp',['as'=>'getLastApp', 'uses'=> 'AppController@getLastApp']);

@@ -20,7 +20,7 @@ class AppPlayerController extends Controller
         
         $file = base64_decode( substr($request->canvasimg, strpos($request->canvasimg, ",")+1));
         $folderName = '/mh94_apps/';
-        $safeName = 'a'.'.'.'png';
+        $safeName = time().'_a'.'.'.'png';
         $destinationPath = public_path() . $folderName;
         echo $destinationPath;
         $success = file_put_contents($destinationPath.$safeName, $file);

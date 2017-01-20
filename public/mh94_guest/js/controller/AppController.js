@@ -4,7 +4,8 @@ app.controller('AppController', function($scope ,$http,$location, API){
 	var getApp = function(url){
 		$http.get(url).then(function successCallback (response){
 		console.log(response);
-		$scope.data =  response.data;
+		
+		$scope.data =   response.data;
 		if(response.data.length < 12){
   			page--;
   			$scope.message = "Hết dữ liệu vui lòng quay lại";
@@ -41,26 +42,50 @@ app.controller('AppController', function($scope ,$http,$location, API){
     // or server returns response with an error status.
   		}) ;
 	}
+	var getList5New = function(){
+		$http.get(API+'list5new').then(function successCallback (response){
+		console.log(response);
+		$scope.data5New =  response.data;
+		
+		}  , function errorCallback(response) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  		}) ;
+	}
+	var getLastApp = function(){
+		$http.get(API+'lastapp').then(function successCallback (response){
+		console.log(response);
+		$scope.dataLastApp =  response.data;
+		
+		}  , function errorCallback(response) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  		}) ;
+	}
+	getLastApp();
+	getList5New();
 	getAppRandom();
 	getAppHot(API + "listhot/"+ pagehot);
 	$scope.name="hoang";
 	console.log(page);
 	getApp(API + "listapp/"+ page)
 
-	$scope.listApp = function(state){
+	$scope.viewmore = function(state){
 
 		//console.log("click");
 		$scope.state = state;
 		console.log(state);
 		switch (state){
-			case "up":
+			case "new":
 				page++;
+				getApp(API + "listapp/"+ page);	
 				break;
-			case "down":
-				if(page > 1){
-					page--;
-				}
-				
+			case "hot":
+				pagehot++;
+				getAppHot(API + "listhot/"+ pagehot);
+				break;
+			case "rand":
+				getAppRandom();
 				break;
 
 		}	
