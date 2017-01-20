@@ -121,9 +121,7 @@
 								<div class="extra content small-text orange-text">
 									<hr>
 									<div class="pull-left">
-					      			<i class="glyphicon glyphicon-thumbs-up"></i> 31,300    
-					      			<i class="glyphicon glyphicon-heart"></i> 31,300   
-					      			<i class="glyphicon glyphicon-comment"></i> 31,300  
+					      			<i class="glyphicon glyphicon-eye-open"></i> {%app.view%}    
 
 					      		</div>
 					      		<div class="pull-right">

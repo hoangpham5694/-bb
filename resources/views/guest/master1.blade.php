@@ -33,22 +33,27 @@
 			<div class="col-md-4 col-sm-4 col-xs-12 pull-right search-panel">
                 <div class="ui search" ng-controller="AppController" >
                     <div class="ui icon input">
-                        <input class="prompt" type="text" ng-focus="showForm=true; focusInput=true" ng-init="showForm=false;" ng-model="keyvalue" ng-change="searchfunc()" placeholder="Search app...">
+                        <input class="prompt" type="text" ng-focus="showForm=true; focusInput=true" ng-blur="showForm=false;" ng-model="keyvalue" ng-change="searchfunc()" placeholder="Search app...">
                         <i class="glyphicon glyphicon-search"></i>
                     </div>
                     <div class="search-result" ng-show="showForm">
-                    	df
+                    	
                     	<ul>
                     		<li ng-repeat="app in dataSearch ">
-                    			<h2>{% app.title %}</h2>
+                    			
+                    				<img src="{!! asset('public/mh94_upload/appimages')!!}/{% app.image %}" alt="">
+                    				<h2><a href="">{% app.title %}</a></h2>
+                    		<div class="clearfix"></div>
+                    			
                     		</li>
+                    		<div class="clearfix"></div>
                     	</ul>
                     </div>
                     <div class="results"></div>
                 </div>
 
             </div>
-		<div class="clear-fix"></div>
+		<div class="clearfix"></div>
 		</div>
 		
 	</div>

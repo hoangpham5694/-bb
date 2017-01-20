@@ -514,3 +514,31 @@ img.img-panel {
 .sidebar .apps .sidebar-apps .img-panel img{
     width:100%;
 }
+.search-result{
+    border: solid #E7E7E7 1px;
+    border-radius: 5px;
+}
+.search-result ul{
+    padding:0;
+    margin:0;
+}
+.search-result ul li{
+    padding: 10px;
+    border-bottom: solid #E7E7E7 1px;
+}
+.search-result ul li img{
+    width: 10%;
+    height: 30px;
+    float:left;
+}
+.search-result ul li h2{
+    float:left;
+    width: 90%;
+  
+    margin: 0;
+    padding: 0 0px 0 5px;
+}
+.search-result ul li h2 a{
+      font-size: 15px;
+    font-weight: bold;
+}
