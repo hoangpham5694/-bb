@@ -150,6 +150,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -165,6 +166,10 @@ return [
 
         Laravel\Socialite\SocialiteServiceProvider::class,
      
+
+    Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+    Intervention\Image\ImageServiceProvider::class,
+    Unisharp\Ckeditor\ServiceProvider::class,
     ],
 
     /*
@@ -213,6 +218,7 @@ return [
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

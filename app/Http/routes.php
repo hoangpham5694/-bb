@@ -18,7 +18,7 @@ Route::get('/', function () {
 */
 
 Route::get('test', function(){
-	return view('guest.master1');
+	return view('admin.app.filemanager');
 });
 
 

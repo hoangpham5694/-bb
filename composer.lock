@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28afaca4ae36e81cb1944304c2fd604c",
-    "content-hash": "fee5cd2dcd9e9baf77ed4b08a14daae0",
+    "hash": "9fe5dfec5cf6db99820ca6758b02a937",
+    "content-hash": "9a0582c10962020c8cbc91dc62b38ed6",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2139,6 +2139,120 @@
             "time": "2016-07-26 08:03:56"
         },
         {
+            "name": "unisharp/laravel-ckeditor",
+            "version": "4.5.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/UniSharp/laravel-ckeditor.git",
+                "reference": "cc9a5505dc3c3a060944aa8b5ce13515547263ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/UniSharp/laravel-ckeditor/zipball/cc9a5505dc3c3a060944aa8b5ce13515547263ec",
+                "reference": "cc9a5505dc3c3a060944aa8b5ce13515547263ec",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unisharp\\Ckeditor\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+",
+                "LGPL-2.1+",
+                "MPL-1.1+"
+            ],
+            "authors": [
+                {
+                    "name": "CKSource",
+                    "homepage": "http://cksource.com"
+                },
+                {
+                    "name": "UniSharp Ltd. (Composer Package Maintainer)",
+                    "homepage": "http://www.unisharp.com"
+                }
+            ],
+            "description": "JavaScript WYSIWYG web text editor (for laravel).",
+            "homepage": "http://ckeditor.com",
+            "keywords": [
+                "CKEditor",
+                "editor",
+                "fckeditor",
+                "html",
+                "javascript",
+                "laravel",
+                "richtext",
+                "text",
+                "wysiwyg"
+            ],
+            "time": "2016-02-16 05:56:20"
+        },
+        {
+            "name": "unisharp/laravel-filemanager",
+            "version": "1.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/UniSharp/laravel-filemanager.git",
+                "reference": "4ad58cb7117ab23dc2a96bdf748f120db4945433"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/4ad58cb7117ab23dc2a96bdf748f120db4945433",
+                "reference": "4ad58cb7117ab23dc2a96bdf748f120db4945433",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.2.0",
+                "intervention/image": "2.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unisharp\\Laravelfilemanager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Trevor Sawler",
+                    "email": "trevor.sawler@gmail.com"
+                },
+                {
+                    "name": "UniSharp Ltd.",
+                    "email": "unisharp-service@unisharp.com"
+                }
+            ],
+            "description": "A file upload/editor intended for use with Laravel 5 and CKEditor / TinyMCE",
+            "keywords": [
+                "CKEditor",
+                "file",
+                "filemanager",
+                "image",
+                "laravel",
+                "manager",
+                "tinymce",
+                "upload"
+            ],
+            "time": "2017-01-03 09:54:33"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
             "source": {
@@ -3517,66 +3631,6 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-12-10 10:07:06"
-        },
-        {
-            "name": "unisharp/laravel-filemanager",
-            "version": "1.6.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/UniSharp/laravel-filemanager.git",
-                "reference": "4ad58cb7117ab23dc2a96bdf748f120db4945433"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/4ad58cb7117ab23dc2a96bdf748f120db4945433",
-                "reference": "4ad58cb7117ab23dc2a96bdf748f120db4945433",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": ">=4.2.0",
-                "intervention/image": "2.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "~4.8"
-            },
-            "suggest": {
-                "ext-gd": "to use GD library based image processing.",
-                "ext-imagick": "to use Imagick based image processing."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Unisharp\\Laravelfilemanager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Trevor Sawler",
-                    "email": "trevor.sawler@gmail.com"
-                },
-                {
-                    "name": "UniSharp Ltd.",
-                    "email": "unisharp-service@unisharp.com"
-                }
-            ],
-            "description": "A file upload/editor intended for use with Laravel 5 and CKEditor / TinyMCE",
-            "keywords": [
-                "CKEditor",
-                "file",
-                "filemanager",
-                "image",
-                "laravel",
-                "manager",
-                "tinymce",
-                "upload"
-            ],
-            "time": "2017-01-03 09:54:33"
         },
         {
             "name": "webmozart/assert",
