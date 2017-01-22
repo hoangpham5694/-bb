@@ -138,7 +138,7 @@
 
 					      		</div>
 					      		<div class="pull-right">
-					      			<i class ="glyphicon glyphicon-calendar"></i> 22 hours ago
+					      			<i class ="glyphicon glyphicon-calendar"></i> {% app.created_at | date:'medium' %}
 					      		</div>
 								</div>
 							</div>
