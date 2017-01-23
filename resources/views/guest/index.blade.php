@@ -138,7 +138,9 @@
 
 					      		</div>
 					      		<div class="pull-right">
-					      			<i class ="glyphicon glyphicon-calendar"></i> {% app.created_at | date:'medium' %}
+					      			<i class ="glyphicon glyphicon-calendar"></i> 
+					      		
+					      			{% convertToDate(app.created_at)%}
 					      		</div>
 								</div>
 							</div>
