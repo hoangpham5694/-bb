@@ -1,6 +1,7 @@
 @extends('admin.master')
 @section('title','Thêm danh mục')
 @section('content')
+<a href="add">thêm app</a>
 		<table class="list_table">
 			<tr class="list_heading">
 				<td class="id_col">STT</td>
