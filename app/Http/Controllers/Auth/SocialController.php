@@ -37,11 +37,11 @@ class SocialController extends Controller
         if($request->session()->has('backurl')){
             echo "Session đang lưu url";
            // echo $request->session()->get('user');
-           
-        }
-         $backurl= $request->session()->get('backurl');
+           $backurl= $request->session()->get('backurl');
             echo $backurl;
             return redirect($backurl);
+        }
+         
      //   return redirect()->route($backurl);
           //  return redirect()->back();
           

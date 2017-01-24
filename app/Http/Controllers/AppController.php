@@ -29,6 +29,17 @@ class AppController extends Controller
     public function getAppAdd(){
     	return view('admin.app.app_add');
     }
+    public function getTestApp(){
+        echo "get test app";
+    }
+    public function postTestApp(Request $request){
+        //echo "post test app";
+        $htmlcode = $request->htmlcode;
+        $jscode = $request->jscode;
+        $title = $request->title;
+        return view('admin.app.testapp',["htmlcode"=>$htmlcode, "jscode"=> $jscode, "title"=> $title]);
+    }
+
     public function postAppAdd(AddAppRequest $request){
     	//return "post add";
     	$app = new App();

@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('edit/{id}',['as'=>'getAppEdit', 'uses' => 'AppController@getAppEdit'])->where('id','[0-9]+');
 			Route::post('edit/{id}',['as' => 'postAddEdit', 'uses' => 'AppController@postAppEdit'])->where('id','[0-9]+');
 			Route::get('delete/{id}',['as'=>'getAppDel', 'uses' => 'AppController@getAppDel'])->where('id','[0-9]+');
+			Route::post('testapp',['as'=>'postTestApp', 'uses' => 'AppController@postTestApp']);
+			Route::get('testapp',['as'=>'getTestApp', 'uses' => 'AppController@getTestApp']);
 		});
     });
    

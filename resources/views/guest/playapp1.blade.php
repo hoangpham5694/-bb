@@ -79,7 +79,7 @@ window.open(url,'','toolbar=0,status=0,width=626, height=436');
 						}
 					}
 
-					var API = "http://bigboomapp.dev:8080/";
+					var API = "{!! asset('/')!!}";
 					$(document).ready(function(){
 						$(".game-result").hide();
 						$(".begin-game").show();
