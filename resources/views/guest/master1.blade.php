@@ -20,10 +20,20 @@
 		<meta name   ="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body ng-app="my-app">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=719228948238299";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 	<div id="header">
 		<div class="container">
 			<div class="logo col-md-2 col-sm-3 col-xs-12">
-			<a href="index.html">
+			<a href="{!! asset('/') !!}">
 					<img src="{!! asset('public/mh94_guest/images')!!}/logo.png" alt="">
 				</a>
 			<a class="visible-xs search-panel-btn" id="search-pn-btn"><i class="glyphicon glyphicon-search"></i></a>
@@ -36,13 +46,13 @@
                         <input class="prompt" type="text" ng-focus="showForm=true; focusInput=true" ng-blur="showForm=false;" ng-model="keyvalue" ng-change="searchfunc()" placeholder="Search app...">
                         <i class="glyphicon glyphicon-search"></i>
                     </div>
-                    <div class="search-result" ng-show="showForm">
+                    <div class="search-result" ng-show="showForm"   >
                     	
                     	<ul>
                     		<li ng-repeat="app in dataSearch ">
                     			
                     				<img src="{!! asset('public/mh94_upload/appimages')!!}/{% app.image %}" alt="">
-                    				<h2><a href="">{% app.title %}</a></h2>
+                    				<h2><a href="{!! url('playapp') !!}/{% app.id %}/{% app.slug %}.html">{% app.title %}</a></h2>
                     		<div class="clearfix"></div>
                     			
                     		</li>
