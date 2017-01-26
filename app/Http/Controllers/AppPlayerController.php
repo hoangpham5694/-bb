@@ -20,14 +20,19 @@ class AppPlayerController extends Controller
         
         $file = base64_decode( substr($request->canvasimg, strpos($request->canvasimg, ",")+1));
         $folderName = '/mh94_apps/';
-        $safeName = time().'_a'.'.'.'png';
-        $destinationPath = public_path() . $folderName;
-        echo $destinationPath;
-        $success = file_put_contents($destinationPath.$safeName, $file);
+        if($request->session()->has('user')){
+            $data  = $request->session()->get('user');
+            $safeName = $data->id.'_'.$request->title.'.'.'png';
+            $destinationPath = public_path() . $folderName;
+            //echo $destinationPath;
+            $success = file_put_contents($destinationPath.$safeName, $file);
             //$file->move($destinationPath,$safeName);
             
 
-        return $success;
+        return $safeName;
+           
+        }
+
     }
 
     public function getResponseTenCuaBan2(Request $request){

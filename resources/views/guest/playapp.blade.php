@@ -69,6 +69,7 @@
 							
 						});
 						$("#shareBtn").click(function(){
+							var picname="";
 							html2canvas($(".game-result")).then(function(canvas) {
             						//console.log(canvas);
             						//$("#canvas").html(canvas);
@@ -97,7 +98,12 @@
 								canvasimg : dataURL },
 								
 								
-								success: function (data) {console.log(data); },
+								success: function (data) {console.log(data);
+									picname = '{!! asset('public/mh94_apps') !!}' +'/' + data;
+									console.log(picname);
+									sharefb(picname);
+
+								 },
 								error: function (data) {console.log(data); },
 
 							})  
@@ -105,12 +111,25 @@
 
 						});
 
-
 							
-							
+						
 							
 
 						});
+	function sharefb( picurl){
+			console.log(picurl);
+										FB.ui({
+										
+										method: 'share',
+										display: 'popup',
+										href: window.location.href,
+										picture: picurl,
+										title: '{!! $data['title'] !!}',
+										description: '{!! $data['description'] !!}',
+										caption: 'B-BoomApp'
+										
+										}, function(response){});
+	}
 });
 	
 	function playgame(){
