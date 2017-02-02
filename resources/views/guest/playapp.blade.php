@@ -47,8 +47,8 @@
 							}
 						}
 					}
-
-					var API = "http://bigboomapp.dev:8080/";
+					var appurl = "{!! $data['appurl'] !!}"
+					var API = "{!! asset('/')!!}";
 					$(document).ready(function(){
 						$(".game-result").hide();
 						$(".begin-game").show();

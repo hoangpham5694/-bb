@@ -18,6 +18,7 @@
 		<script  src=<?php echo asset('public/mh94_guest/js/myscript.js') ; ?>> </script>
 
 		<meta name   ="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 </head>
 <body ng-app="my-app">
 <div id="fb-root"></div>
@@ -38,15 +39,15 @@
 				</a>
 			<a class="visible-xs search-panel-btn" id="search-pn-btn"><i class="glyphicon glyphicon-search"></i></a>
 		</div>
-		
+
 		
 			<div class="col-md-4 col-sm-4 col-xs-12 pull-right search-panel">
-                <div class="ui search" ng-controller="AppController" >
-                    <div class="ui icon input">
-                        <input class="prompt" type="text" ng-focus="showForm=true; focusInput=true" ng-blur="showForm=false;" ng-model="keyvalue" ng-change="searchfunc()" placeholder="Search app...">
+                <div class="ui search" ng-controller="AppController" ng-init="focus=false;blur=true;active=false" >
+                    <div class="ui icon input" >
+                        <input class="prompt" type="text" ng-focus="focus=true;blur=false;" ng-blur="blur=true;focus=false;"  ng-model="keyvalue" ng-change="searchfunc()" placeholder="Search app...">
                         <i class="glyphicon glyphicon-search"></i>
                     </div>
-                    <div class="search-result" ng-show="showForm"   >
+                    <div class="search-result"  ng-class="{ myFocus: focus, myBlur: blur }"  >
                     	
                     	<ul>
                     		<li ng-repeat="app in dataSearch ">

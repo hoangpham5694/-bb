@@ -11,7 +11,7 @@
 				</span><br />
 				<span class="form_label">Đường dẫn:</span>
 				<span class="form_item">
-					<input type="text" name="txtUrl" class="textbox" value="{{ $data['appurl'] }}" />
+					<input type="text" name="txtUrl" id="appurl" class="textbox" value="{{ $data['appurl'] }}" />
 				</span><br />
 		
 				<span class="form_label">Mô tả:</span>
@@ -77,6 +77,7 @@
 								},
 								data:{ '_token': CSRF_TOKEN,
 								title: "{{ $data['title'] }}",
+								appurl : $('#appurl').val(),
 								htmlcode: $("#htmlcode").val(),
 								jscode: $("#jscode").val(),
 

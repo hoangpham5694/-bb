@@ -8,7 +8,8 @@
  
                     </form>
                     <script>
-                    var API = "http://bigboomapp.dev:8080/";
+                        var appurl = ""
+                    var API = "{!! asset('/')!!}";
 
                     function playgame(){
     filldata();

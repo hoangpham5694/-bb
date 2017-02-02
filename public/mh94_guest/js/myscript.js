@@ -18,5 +18,17 @@ function playgame(){
     filldata();
 }
 
-
-$(document).ready(function() {});
+var toogle = true;
+$(document).ready(function() {
+    $(".search-panel-btn").click(function() {
+        if(toogle){
+            $(".search-panel").css("display","block");
+            toogle = false;
+        }else{
+             $(".search-panel").css("display","none");
+            toogle = true;
+        }
+       
+       
+    });
+});

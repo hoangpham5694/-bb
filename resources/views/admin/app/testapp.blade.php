@@ -8,6 +8,7 @@
  
                     </form>
                     <script>
+                    var appurl = "{!! $appurl !!}";
                     var API = "{!! asset('/')!!}";
 
                     function playgame(){

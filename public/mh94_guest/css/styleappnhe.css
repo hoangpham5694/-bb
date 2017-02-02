@@ -261,6 +261,12 @@ i.glyphicon.glyphicon-calendar, .glyphicon-heart, .glyphicon-comment,.glyphicon-
 }
 
 }
+@media (min-width: 768px){
+.search-panel {
+
+    display: block!important;
+}
+}
 .search-panel{
     position: relative;
 
@@ -273,6 +279,18 @@ i.glyphicon.glyphicon-calendar, .glyphicon-heart, .glyphicon-comment,.glyphicon-
     width: 100%;
     
     z-index: 1;
+}
+.search-panel .search-result.myFocus{
+
+}
+.search-panel .search-result.myBlur{
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition-property: opacity, visibility;
+    transition-duration: 2s, 0s;
+    transition-delay: 0s, 2s;
+    
 }
 .search-panel .search-result ul li{
     list-style-type: none;

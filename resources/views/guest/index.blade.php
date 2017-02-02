@@ -51,7 +51,8 @@
 
 					      		</div>
 					      		<div class="pull-right">
-					      			<i class ="glyphicon glyphicon-calendar"></i> 22 hours ago
+					      			<i class ="glyphicon glyphicon-calendar"></i> 
+					      			{% app.created_at | dateFilter | date:"dd-MM-yyyy" %}
 					      		</div>
 					      	</div>
 					      </div>
@@ -77,7 +78,8 @@
 
 					      		</div>
 					      		<div class="pull-right">
-					      			<i class ="glyphicon glyphicon-calendar"></i> 22 hours ago
+					      			<i class ="glyphicon glyphicon-calendar"></i> 
+					      			{% app.created_at | dateFilter | date:"dd-MM-yyyy" %}
 					      		</div>
 					      	</div>
 					      </div>
@@ -127,7 +129,7 @@
 									<a href="#" target="_blank"></a>
 									<div class="header">
 										<a href="#" target="_blank"></a>
-										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title %}</a>
+										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title | cut:true:30:' ...' %}</a>
 									</div>
 									
 								</div>
@@ -140,7 +142,7 @@
 					      		<div class="pull-right">
 					      			<i class ="glyphicon glyphicon-calendar"></i> 
 					      		
-					      			{% convertToDate(app.created_at)%}
+					      			{% app.created_at | dateFilter | date:"dd-MM-yyyy" %}
 					      		</div>
 								</div>
 							</div>
@@ -167,7 +169,7 @@
 									<a href="#" target="_blank"></a>
 									<div class="header">
 										<a href="#" target="_blank"></a>
-										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title %}</a>
+										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title | cut:true:30:' ...' %}</a>
 									</div>
 									
 								</div>
@@ -178,7 +180,8 @@
 
 					      		</div>
 					      		<div class="pull-right">
-					      			<i class ="glyphicon glyphicon-calendar"></i> 22 hours ago
+					      			<i class ="glyphicon glyphicon-calendar"></i> 
+					      			{% app.created_at | dateFilter | date:"dd-MM-yyyy" %}
 					      		</div>
 								</div>
 							</div>
@@ -206,7 +209,7 @@
 									<a href="#" target="_blank"></a>
 									<div class="header">
 										<a href="#" target="_blank"></a>
-										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title %}</a>
+										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title | cut:true:30:' ...' %}</a>
 									</div>
 									
 								</div>
@@ -217,7 +220,8 @@
 
 					      		</div>
 					      		<div class="pull-right">
-					      			<i class ="glyphicon glyphicon-calendar"></i> 22 hours ago
+					      			<i class ="glyphicon glyphicon-calendar"></i> 
+					      			{% app.created_at | dateFilter | date:"dd-MM-yyyy" %}
 					      		</div>
 								</div>
 							</div>
