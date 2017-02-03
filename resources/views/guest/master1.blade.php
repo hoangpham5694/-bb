@@ -18,7 +18,7 @@
 		<script  src=<?php echo asset('public/mh94_guest/js/myscript.js') ; ?>> </script>
 
 		<meta name   ="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+<link rel="shortcut icon" href="{{ asset('photos/icon.png') }}">
 </head>
 <body ng-app="my-app">
 <div id="fb-root"></div>
