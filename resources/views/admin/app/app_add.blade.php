@@ -71,7 +71,7 @@
 									'contentType': 'application/upload',
 								},
 								data:{ '_token': CSRF_TOKEN,
-							
+								appurl : $('#appurl').val(),
 								htmlcode: $("#htmlcode").val(),
 								jscode: $("#jscode").val(),
 
