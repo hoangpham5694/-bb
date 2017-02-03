@@ -8,9 +8,9 @@
 				<td rowspan="3" class="statistics_panel">
 					<h3>Thống kê:</h3>
 					<ul>
-						<li>Tổng số user:</li>
-						<li>Tổng số danh mục:</li>
-						<li>Tổng số tin:</li>
+						<li>Tổng số app: {{ $numrecord }}</li>
+						<li>Tổng số view app: {{ $totalView }}</li>
+						
 					</ul>
 				</td>
 			</tr>

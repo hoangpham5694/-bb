@@ -16,10 +16,12 @@ Route::get('/', function () {
     return view('guest.master');
 });
 */
-
+/*
 Route::get('test', function(){
 	return view('admin.app.filemanager');
 });
+*/
+//Route::get('test',['as' => 'getTest', 'uses' => 'AdminController@getStatistics']);
 
 
 Route::get('/',['as' => 'getIndex', 'uses' => 'HomeController@getIndex']);
@@ -32,9 +34,11 @@ Route::get('saveimage',['as' => 'getSaveImage', 'uses' => 'AppPlayerController@g
 Route::get('playapp/{id}/{slug}',['as' => 'getPlayApp', 'uses' => 'AppController@getPlayApp'])->where('id','[0-9]+');
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'adminsites'], function(){
-    	Route::get('/', function(){
+    	/*Route::get('/', function(){
     		return view('admin.dashboard.main');
     	});
+    	*/
+		Route::get('/',['as' => 'getStatistics', 'uses' => 'AdminController@getStatistics']);
 		Route::group(['prefix' => 'user'], function(){
 			Route::get('/', ['as' => 'getUserList', 'uses' => 'UserController@getUserList']);
 			Route::get('list', ['as' => 'getUserList', 'uses' => 'UserController@getUserList']);
