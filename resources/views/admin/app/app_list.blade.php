@@ -1,10 +1,10 @@
 @extends('admin.master')
 @section('title','Thêm danh mục')
 @section('content')
-<a href="add">thêm app</a>
+<a href="add">Thêm app</a>
 		<table class="list_table">
 			<tr class="list_heading">
-				<td class="id_col">STT</td>
+				<td class="id_col">ID</td>
 				<td>Tiêu Đề</td>
 				<td>URL</td>
 				<td>Thời Gian</td>
@@ -27,7 +27,18 @@
                 </td>
             </tr>
             @endforeach
-			
+
+
 
 		</table>
+        Trang 
+
+            @for ($i = 1; $i < $numPages; $i++)
+                @if ($i == $page)
+                    {{ $i }}
+                @else
+                    <a href="/adminsites/app/list/{{ $i }}" > {{ $i }} </a>
+                @endif
+            
+            @endfor
 @endsection

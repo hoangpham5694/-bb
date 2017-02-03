@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::group(['prefix' => 'app'], function(){
 			Route::get('add',['as' => 'getAddApp', 'uses' => 'AppController@getAppAdd']);
 			Route::post('add',['as' => 'postAddApp', 'uses' => 'AppController@postAppAdd']);
-			Route::get('list',['as'=>'getAppList', 'uses' => 'AppController@getAppList']);
+			Route::get('list/{page?}',['as'=>'getAppList', 'uses' => 'AppController@getAppList'])->where('page','[0-9]+');;
 			Route::get('edit/{id}',['as'=>'getAppEdit', 'uses' => 'AppController@getAppEdit'])->where('id','[0-9]+');
 			Route::post('edit/{id}',['as' => 'postAddEdit', 'uses' => 'AppController@postAppEdit'])->where('id','[0-9]+');
 			Route::get('delete/{id}',['as'=>'getAppDel', 'uses' => 'AppController@getAppDel'])->where('id','[0-9]+');
@@ -69,7 +69,7 @@ Route::get('facebook/redirect', ['as'=>'redirectToProvider', 'uses' => 'Auth\Soc
 Route::get('facebook/callback', ['as'=>'handleProviderCallback', 'uses' => 'Auth\SocialController@handleProviderCallback']);
 Route::get('listapp/{page}',['as'=>'getListApp', 'uses' => 'AppController@getAppListWithPage'])->where('page','[0-9]+');
 Route::get('listapprandom',['as'=> 'getListAppRandom', 'uses' => 'AppController@getListAppRandom']);
-Route::get('listhot/{page}',['as'=> 'getListHot', 'uses'=> 'AppController@getListHot'])->where('id','[0-9]+');
+Route::get('listhot/{page}',['as'=> 'getListHot', 'uses'=> 'AppController@getListHot'])->where('page','[0-9]+');
 Route::get('listsearch/{keyword}', ['as' => 'getlistSearch', 'uses' => "AppController@getSearchApp"]);
 Route::get('list5new',['as'=>'getList5New', 'uses'=> 'AppController@getList5New']);
 Route::get('lastapp',['as'=>'getLastApp', 'uses'=> 'AppController@getLastApp']);

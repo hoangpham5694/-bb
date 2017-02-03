@@ -11,9 +11,13 @@ use App\App;
 use DateTime,File;
 class AppController extends Controller
 {
-    public function getAppList(){
-        $data= App::select('id','title','image','appurl','created_at')->get()->toArray();
-        return view('admin.app.app_list',['dataApp'=>$data]);
+    public function getAppList($page = 1){
+        $numberRecord= 20;
+        $vitri =($page -1 ) * $numberRecord;
+        $totalApp = App::count();
+        $numPages = $totalApp / $numberRecord +1;
+        $data= App::select('id','title','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+        return view('admin.app.app_list',['dataApp'=>$data, 'numPages' => $numPages, 'page'=> $page]);
     }
 
     public function getPlayApp(Request $request, $id){
