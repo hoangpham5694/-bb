@@ -2,6 +2,7 @@
 	<?php $title = $data['title'] ?>
 	@section('title')
 <title>{{ $title }} - BBoom App</title>
+		<script type ="text/javascript" src=<?php echo asset('public/mh94_guest/js/lib/html2canvas.js') ; ?>> </script>
 
 <style>
 	
@@ -15,6 +16,7 @@
 }
 .main-top .game .loading-game{
 	text-align: center;
+	height: 400px;	
 }
 .main-top .game .loading-game img{
 	width:100px;
@@ -38,6 +40,20 @@
 						<input type="text" hidden value="{!! asset('public/')!!}" id="rooturl">
 
 					</form>
+					   <script type="text/javascript">
+        function resize_canvas(){
+            canvas = document.getElementById("canvas");
+            if (canvas.width  < window.innerWidth)
+            {
+                canvas.width  = window.innerWidth;
+            }
+
+            if (canvas.height < window.innerHeight)
+            {
+                canvas.height = window.innerHeight;
+            }
+        }
+    </script>
 										<script>
 					function sleep(milliseconds) {
 						var start = new Date().getTime();
@@ -50,20 +66,33 @@
 					var appurl = "{!! $data['appurl'] !!}"
 					var API = "{!! asset('/')!!}";
 					$(document).ready(function(){
+
+
+
+
 						$(".game-result").hide();
 						$(".begin-game").show();
 						$(".loading-game").hide();
+						$("#shareBtn").hide();
 						$(".viewBtn").click(function() {
 							filldata();
 							$(".begin-game").hide();
 							$(".loading-game").show();
+
 							setTimeout(function(){
 								$(".loading-game").hide();
 								$(".game-result").show();
 								$(".viewBtn").hide();
 								$("#shareBtn").show();
-							}, 1000);
-							
+						/*		html2canvas($(".game-result"), {
+									userCORS:true,
+        							allowTaint: true,
+        							logging:true
+    							}).then(function(canvas){
+								$("#canvas-img").html(canvas);
+							});*/
+							}, 2000);
+
 							
 							
 							
@@ -72,7 +101,7 @@
 							var picname="";
 							html2canvas($(".game-result")).then(function(canvas) {
             						//console.log(canvas);
-            						//$("#canvas").html(canvas);
+            						//$("#canvas-img").html(canvas);
             						//$(".canvas").hide();
             						var dataURL = canvas.toDataURL("image/png");
 									//console.log(dataURL);
@@ -143,7 +172,7 @@
 							{!! $data['html']!!}
 							{!! $data['script'] !!}	
 	 					</div>
-	 					<div id="canvas-img"></div>
+	 					<div id="canvas-img" onresize="resize_canvas()" ></div>
 	 					<div class="loading-game">
 	 						<h1>Loading......</h1>
 	 						<img src="{!! asset('public/mh94_guest/images/app_load.gif')!!}" width="100px" alt="">
@@ -158,6 +187,7 @@
 	 					
 	 				</div>
 						</div>
+
 	 				</div>
 	 					 				<div class="view-result">
 	 				@if(Session::has('user'))

@@ -37,7 +37,7 @@
 					      <a href="playapp/{% app.id %}/{% app.slug %}.html" target="_blank">
 					      <div class="banner-text col-md-4 hidden-xs hidden-sm">
 					      	<div class="title">
-					      		{% app.title %}"
+					      		{% app.title %}
 					      	</div>
 					      	<hr></hr>
 					      	<div class="content">
