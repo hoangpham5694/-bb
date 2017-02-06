@@ -84,13 +84,23 @@
 								$(".game-result").show();
 								$(".viewBtn").hide();
 								$("#shareBtn").show();
-						/*		html2canvas($(".game-result"), {
-									userCORS:true,
-        							allowTaint: true,
-        							logging:true
+					/*			html2canvas($(".game-result"), {
+									
+									
+        						//	allowTaint: true,
+        						//	userCORS:true,
+        							logging:true,
+        							proxy:"{!! asset('/') !!}/html2canvasproxy.php",
+    "onrendered": function(canvas) {
+       // alert(canvas);
+        var url = canvas.toDataURL("image/png");
+        window.open(url, "_blank");
+    }
+
     							}).then(function(canvas){
 								$("#canvas-img").html(canvas);
 							});*/
+    							
 							}, 2000);
 
 							
@@ -99,7 +109,14 @@
 						});
 						$("#shareBtn").click(function(){
 							var picname="";
-							html2canvas($(".game-result")).then(function(canvas) {
+							html2canvas($(".game-result"), {
+									
+								//	userCORS:true,
+        							//allowTaint: true,
+        							logging:true,
+        							proxy:"{!! asset('/') !!}/html2canvasproxy.php",
+
+    							}).then(function(canvas) {
             						//console.log(canvas);
             						//$("#canvas-img").html(canvas);
             						//$(".canvas").hide();
@@ -178,7 +195,7 @@
 	 						<img src="{!! asset('public/mh94_guest/images/app_load.gif')!!}" width="100px" alt="">
 	 					</div>
 	 					<div class="begin-game">
-							<div class="view-result">
+							<div class="view-result" crossOrigin="anonymous">
 	 							@if(Session::has('user'))
 	 								<button class="viewBtn" onclick="playgame();"  >Xem kết quả</button>
 								@else
@@ -235,4 +252,12 @@
 	 		
 		</div>
 		<div class="clear-fix"></div>
+		<!--
+$('body').html2canvas();
+var queue = html2canvas.Parse();
+var canvas = html2canvas.Renderer(queue,{elements:{length:1}});
+var img = canvas.toDataURL();
+window.open(img);
+*/ -->
 @endsection
+

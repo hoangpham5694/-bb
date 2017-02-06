@@ -16,11 +16,11 @@ Route::get('/', function () {
     return view('guest.master');
 });
 */
-/*
+
 Route::get('test', function(){
-	return view('admin.app.filemanager');
+	return view('guest.proxy');
 });
-*/
+
 //Route::get('test',['as' => 'getTest', 'uses' => 'AdminController@getStatistics']);
 
 

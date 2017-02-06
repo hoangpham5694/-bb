@@ -39,8 +39,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'facebook' => [
-    'client_id' => '719228948238299',
-    'client_secret' => '9caaadf1dce4fa3dc6eeeb8279ffe6fb',
+    'client_id' => '719369414890919',
+    'client_secret' => '17167aa4fca0e59e919389dbdf2d559c',
     'redirect' => 'http://bigboomapp.dev:8080/facebook/callback',
 ],
 
