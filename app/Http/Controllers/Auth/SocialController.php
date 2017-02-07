@@ -12,7 +12,7 @@ class SocialController extends Controller
 {
      public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->scopes(['user_friends'])->redirect();
     }
 
     /**
@@ -22,7 +22,9 @@ class SocialController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
-        $user = Socialite::driver('facebook')->stateless()->user();
+     //   $user = Socialite::driver('facebook')->stateless()->user();
+        //  $user = Socialite::driver('facebook')->fields(['name','first_name','last_name', 'email', 'gender', 'verified', 'taggable_friends{name,last_name,first_name,picture}'])->user();
+         $user = Socialite::driver('facebook')->fields(['name','first_name','last_name', 'email', 'gender', 'verified'])->user();
         //dd($user);
         // $user->token;
        // print_r($user);
@@ -40,6 +42,8 @@ class SocialController extends Controller
            $backurl= $request->session()->get('backurl');
             echo $backurl;
             return redirect($backurl);
+        }else{
+            return redirect()->route('getIndex');
         }
          
      //   return redirect()->route($backurl);
@@ -64,7 +68,23 @@ class SocialController extends Controller
         }
         return response()->json($data);
     }
+    public function getUserFriends(Request $request){
+        if(!$request->session()->has('user')){
+        echo "Session đang không lưu user";
+          //  $backurl= 'getResponseTenCuaBan';
+        //    $request->session()->put('backurl', $backurl);
+            return redirect()->route('redirectToProvider');
 
+           
+        }else{
+        //   echo "Session đang lưu user";
+            $data  = $request->session()->get('user');
+           // dd($data);
+            
+           // echo $data->user['gender'] ;
+        }
+        return response()->json($data);
+    }
     
 
 }
