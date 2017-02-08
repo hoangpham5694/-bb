@@ -28,7 +28,15 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=626608597450914";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+$body = $("body");
+
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+     ajaxStop: function() { $body.removeClass("loading"); }    
+});
+
+</script>
 
 
 	<div id="header">
@@ -87,6 +95,6 @@
 	<div id="btn-goto-top" class="ui icon orange button scrollToTop " style="display: block;">
     <i class="glyphicon glyphicon-menu-up"></i>
 </div>
-
+<div class="modal"><!-- Place at bottom of page --></div>
 </body>
 </html>

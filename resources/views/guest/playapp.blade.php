@@ -26,6 +26,8 @@
 	height:400px;
 	background: url("{!! asset('public/mh94_guest/images/bg1.svg')!!}");
 }
+
+
 </style>
 	@endsection
 @section('content')
@@ -84,7 +86,7 @@
 								$(".game-result").show();
 								$(".viewBtn").hide();
 								$("#shareBtn").show();
-					/*			html2canvas($(".game-result"), {
+						/*		html2canvas($(".game-result"), {
 									
 									
         						//	allowTaint: true,
@@ -94,7 +96,33 @@
     "onrendered": function(canvas) {
        // alert(canvas);
         var url = canvas.toDataURL("image/png");
-        window.open(url, "_blank");
+     //   window.open(url, "_blank");
+     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+     				$.ajax({
+								url:"{!! url('saveimage')!!}",
+								type:"POST",
+								header:{
+									'contentType': 'application/upload',
+								},
+								data:{ '_token': CSRF_TOKEN,
+								title: "{!! $data['slug']!!}",
+								canvasimg : url },
+								
+								
+								success: function (data) {console.log(data);
+									picname = '{!! asset('public/mh94_apps') !!}' +'/' + data;
+									console.log(picname);
+									sharefb(picname);
+
+								 },
+								error: function (data) {console.log(data); },
+
+							})  
+
+
+
+
+
     }
 
     							}).then(function(canvas){
@@ -109,6 +137,7 @@
 						});
 						$("#shareBtn").click(function(){
 							var picname="";
+							$body.addClass("loading"); 
 							html2canvas($(".game-result"), {
 									
 								//	userCORS:true,
@@ -182,6 +211,11 @@
 		
 
 	}
+
+
+
+
+
 
 	</script>
 	 				<div class="game">	
@@ -259,5 +293,6 @@ var canvas = html2canvas.Renderer(queue,{elements:{length:1}});
 var img = canvas.toDataURL();
 window.open(img);
 */ -->
+
 @endsection
 
