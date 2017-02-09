@@ -575,8 +575,8 @@ img.img-panel {
     left:       0;
     height:     100%;
     width:      100%;
-    background: rgba( 79, 79, 79, 0.39 ) 
-                url('https://www.groundwala.in/media/imgs/balls_loading.gif') 
+    background: rgba( 255, 255, 255, .6 ) 
+                url('/mh94_guest/images/ring-alt.gif') 
                 50% 50% 
                 no-repeat;
 }

@@ -11,7 +11,7 @@
 ini_set('display_errors', 'Off');
 
 //setup
-define('PATH', 'images');         //relative folder where the images are saved
+define('PATH', 'photos/2/proxyimages');         //relative folder where the images are saved
 define('PATH_PERMISSION', 0666);  //use 644 or 666 for remove execution for prevent sploits
 define('CCACHE', 60 * 5 * 1000);  //Limit access-control and cache, define 0/false/null/-1 to not use "http header cache"
 define('TIMEOUT', 30);            //Timeout from load Socket

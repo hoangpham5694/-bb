@@ -65,6 +65,10 @@
 							}
 						}
 					}
+
+
+
+					
 					var appurl = "{!! $data['appurl'] !!}"
 					var API = "{!! asset('/')!!}";
 					$(document).ready(function(){
@@ -176,6 +180,7 @@
 								success: function (data) {console.log(data);
 									picname = '{!! asset('public/mh94_apps') !!}' +'/' + data;
 									console.log(picname);
+									$body.removeClass("loading");
 									sharefb(picname);
 
 								 },
