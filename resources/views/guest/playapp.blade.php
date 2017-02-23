@@ -33,8 +33,8 @@
 @section('content')
 
 
-	<div class="main col-md-8 col-sm-10 col-xs-12">
-			<div class="main-top">
+	<div class="main col-md-8 col-sm-10">
+			<div class="main-top ">
 	 				<div class="title">
 	 					<h1>{!! $data['title']; !!}</h1>
 	 				</div>
@@ -90,7 +90,7 @@
 								$(".game-result").show();
 								$(".viewBtn").hide();
 								$("#shareBtn").show();
-						/*		html2canvas($(".game-result"), {
+					/*			html2canvas($(".game-result"), {
 									
 									
         						//	allowTaint: true,
@@ -100,7 +100,7 @@
     "onrendered": function(canvas) {
        // alert(canvas);
         var url = canvas.toDataURL("image/png");
-     //   window.open(url, "_blank");
+        window.open(url, "_blank");
      var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
      				$.ajax({
 								url:"{!! url('saveimage')!!}",
@@ -201,8 +201,9 @@
 										FB.ui({
 										
 										method: 'share',
-										display: 'popup',
+										display: 'iframe',
 										href: window.location.href,
+										mobile_iframe: true,
 										picture: picurl,
 										title: '{!! $data['title'] !!}',
 										description: '{!! $data['description'] !!}',

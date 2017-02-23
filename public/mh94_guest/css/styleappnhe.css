@@ -592,3 +592,6 @@ body.loading {
 body.loading .modal {
     display: block;
 }
+.game-result{
+    width:730px;
+}
