@@ -4,7 +4,7 @@ app.controller('AppController', function($scope ,$http,$location, API){
 	var getApp = function(url){
 		$http.get(url).then(function successCallback (response){
 		console.log(response);
-		
+		console.log(page);
 		$scope.data =   response.data;
 		if(response.data.length < 12){
   			page--;
@@ -70,7 +70,7 @@ app.controller('AppController', function($scope ,$http,$location, API){
 	console.log(page);
 	getApp(API + "listapp/"+ page)
 
-	$scope.viewmore = function(state){
+	$scope.nextpage = function(state){
 
 		//console.log("click");
 		$scope.state = state;
@@ -93,6 +93,29 @@ app.controller('AppController', function($scope ,$http,$location, API){
 		
 
 
+	};
+	$scope.previouspage = function(state){
+		$scope.state = state;
+		console.log(state);
+		if(page >1){
+			page--;
+			switch (state){
+			case "new":
+			
+				
+				getApp(API + "listapp/"+ page);	
+				break;
+			case "hot":
+				pagehot++;
+				getAppHot(API + "listhot/"+ pagehot);
+				break;
+			case "rand":
+				getAppRandom();
+				break;
+
+		}
+		}
+		
 	};
 	$scope.searchfunc = function(){
 		var key = $scope.keyvalue;

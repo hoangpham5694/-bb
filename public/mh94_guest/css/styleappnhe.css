@@ -1,9 +1,9 @@
 body {
-    background-color: #f5f6f7 !important;
+    background-color: #e9ebee !important;
 }
 div#header {
-    background-color: #f2711c;
-    border-color: #f2711c;
+    background-color: #3b5998;
+    border-color: #29487d;
 }
 .ui.search {
     padding: 0;
@@ -30,7 +30,7 @@ div#header {
     padding-right: 2.67142857em!important;
 }
 .ui.search .prompt {
-    border-radius: 500rem;
+    border-radius: 5px;
 }
 .ui.input input {
     margin: 0;
@@ -347,7 +347,7 @@ a:hover{
     right: 10px;
 }
 .ui.orange.button, .ui.orange.buttons .button {
-    background-color: #f2711c;
+    background-color: #29487d;
     color: #fff;
 }
 .ui.orange.button {
@@ -486,13 +486,13 @@ div#navbar .open:hover .ui.segments.dropdown-menu{
 }
 .view-result {
     margin: 10px 20px 10px 20px;
-    
+    text-align: center;
     font-size: 24px;
     white-space: inherit;
 }
 
 .view-result >button {
-    background-color: #f2711c;
+    background-color: #3b5998;
     color: #fff;
     display: block;
     padding: 10px;
@@ -505,7 +505,11 @@ button{
     font-weight: 700;
     line-height: 1.43;
     cursor: pointer;
-    width: 100%;
+        /* width: 100%; */
+    background-color: #29487d;
+    border-color: #29487d;
+    color: white;
+    padding: 10px 15px;
     
 }
 .nc-tittle {
@@ -514,8 +518,8 @@ button{
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
-    padding: 10px 5px;
-    border-top: 3px solid #f2711c;
+    padding: 10px 5px 0px 5px;
+    border-top: 3px solid #29487d;
 background-color: #fff;
         
         box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
@@ -562,6 +566,7 @@ img.img-panel {
 }
 .sidebar .apps ul{
     padding:0;
+    margin-bottom: 0px;
 }
 .sidebar {
     margin-top: 15px;
@@ -594,4 +599,48 @@ body.loading .modal {
 }
 .game-result{
     width:730px;
+}
+
+.ads{
+    margin : 0 auto;
+    text-align: center;
+        margin-top: 20px;
+}
+.view-result a {
+    background-color: #3b5998;
+    color: #fff;
+    font-weight: 700;
+    padding: 15px 20px;
+    font-size: 23px;
+}
+.view-result a:hover{
+    background-color: #3b5998;
+    color: #fff!important;
+    font-weight: 700;
+}
+.share-btn{
+    background-color: #3b5998 ;
+    border-color: #29487d ;
+    color: #fff;
+    font-weight: 700;
+    padding: 15px 20px;
+    font-size: 23px;
+    border-radius: 0px;
+}
+.share-btn:hover{
+    color: #fff;
+    font-weight: 700;
+    padding: 15px 20px;
+    font-size: 23px;
+}
+.group-btn{
+        max-width: 400px;
+    margin: 0 auto;
+
+}
+.group-btn .btn-previous{
+    float:left;
+}
+.group-btn .btn-next{
+    float:right;
 }

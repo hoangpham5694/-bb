@@ -24,6 +24,8 @@
 }
 .begin-game{
 	height:400px;
+	padding-top: 150px;
+
 	background: url("{!! asset('public/mh94_guest/images/bg1.svg')!!}");
 }
 
@@ -79,17 +81,18 @@
 						$(".game-result").hide();
 						$(".begin-game").show();
 						$(".loading-game").hide();
-						$("#shareBtn").hide();
+						$(".share-btn").hide();
 						$(".viewBtn").click(function() {
 							filldata();
 							$(".begin-game").hide();
 							$(".loading-game").show();
+							
 
 							setTimeout(function(){
 								$(".loading-game").hide();
 								$(".game-result").show();
 								$(".viewBtn").hide();
-								$("#shareBtn").show();
+								$(".share-btn").show();
 					/*			html2canvas($(".game-result"), {
 									
 									
@@ -139,7 +142,7 @@
 							
 							
 						});
-						$("#shareBtn").click(function(){
+						$(".share-btn,.share-img").click(function(){
 							var picname="";
 							$body.addClass("loading"); 
 							html2canvas($(".game-result"), {
@@ -224,7 +227,9 @@
 
 
 	</script>
+<button  class="btn share-btn clearfix">Share kết quả lên tường</Button>
 	 				<div class="game">	
+
 						<div class="game-result">
 							{!! $data['html']!!}
 							{!! $data['script'] !!}	
@@ -239,23 +244,32 @@
 	 							@if(Session::has('user'))
 	 								<button class="viewBtn" onclick="playgame();"  >Xem kết quả</button>
 								@else
-									<a class="btn clearfix" href="{!! url('facebook/redirect')!!}">Đăng nhập để xem kết quả</a>
+									<a class="btn clearfix" href="{!! url('facebook/redirect')!!}">
+									<i class="fa fa-facebook-square"></i>	Đăng nhập để xem kết quả</a>
 	 							@endif
 	 					
 	 				</div>
 						</div>
 
 	 				</div>
-	 					 				<div class="view-result">
+	 				<button  class="btn share-btn clearfix">Share kết quả lên tường</Button>
+	 				<div class="ads">
+	 					<img src="{!! asset('public/mh94_guest/images/aa.jpg')!!}" alt="">
+	 				</div>
+	 				<div class="view-result">
 	 				@if(Session::has('user'))
 	 			
 						<button class="viewBtn" onclick="playgame();"  >Xem kết quả</button>
-						<button id="shareBtn" class="btn btn-success clearfix">Share kết quả lên tường</Button>
+						
 
 					@else
-						<a class="btn clearfix" href="{!! url('facebook/redirect')!!}">Đăng nhập để xem kết quả</a>
+						<a class="btn clearfix" href="{!! url('facebook/redirect')!!}">
+							<i class="fa fa-facebook-square"></i> Đăng nhập để xem kết quả</a>
 	 				@endif
 	 					
+	 				</div>
+	 					<div class="ads">
+	 					<img src="{!! asset('public/mh94_guest/images/bbbb.jpg')!!}" alt="">
 	 				</div>
 	 			</div>
 	 			<div class="nc-title">
@@ -287,9 +301,12 @@
 								</li>
 							
 					</ul>	
+
 	 		</div>
 	 		</div>
-	 		
+	 		<div class="ads">
+	 			<img src="{!! asset('public/mh94_guest/images/ccc.jpg')!!}" alt="">
+	 		</div>
 		</div>
 		<div class="clear-fix"></div>
 		<!--

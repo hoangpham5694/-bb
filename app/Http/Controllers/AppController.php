@@ -109,10 +109,10 @@ class AppController extends Controller
      }
     public function getAppListWithPage($page){
         $numberRecord= 12;
-       // $vitri =($page -1 ) * $numberRecord;
-       // $data = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get();
-       $numberRecord = $numberRecord * $page;
-       $data = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->get();
+        $vitri =($page -1 ) * $numberRecord;
+        $data = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get();
+     //  $numberRecord = $numberRecord * $page;
+     //  $data = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->get();
         return  json_encode($data);
     }
     public function getListHot($page){
@@ -124,7 +124,7 @@ class AppController extends Controller
         return  json_encode($data);
     }
     public function getListAppRandom(){
-        $numberRecord = 12;
+        $numberRecord = 5;
         $app = App::select('id','title','description','slug','view','image','appurl','created_at')->inRandomOrder()->limit($numberRecord)->offset(0)->get();;
         return json_encode($app);
     }
