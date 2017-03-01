@@ -23,7 +23,9 @@ class LoginController extends Controller
     }
     public function postLogin(LoginRequest $request){
     	$login = ['username' => $request->txtUser,
-    	 'password' => $request->txtPass];
+    	 'password' => $request->txtPass,
+         'role' => 2 
+         ];
         if (Auth::attempt($login)) {
             // Authentication passed...
             return redirect('adminsites');
