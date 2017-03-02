@@ -23,12 +23,19 @@ class LoginController extends Controller
     }
     public function postLogin(LoginRequest $request){
     	$login = ['username' => $request->txtUser,
-    	 'password' => $request->txtPass,
-         'role' => 2 
+    	 'password' => $request->txtPass
+            
          ];
         if (Auth::attempt($login)) {
             // Authentication passed...
-            return redirect('adminsites');
+          //  dd(Auth::user()->role);
+            if(Auth::user()->role == 2){
+                return redirect('adminsites');
+            }
+            if(Auth::user()->role == 3){
+                return redirect('devsites');
+            }
+           // return redirect('adminsites');
         } else {
         	return redirect()->back();
         }

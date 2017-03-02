@@ -30,9 +30,11 @@ Route::post('login',['as' => 'postLogin', 'uses' => 'LoginController@postLogin']
 Route::get('logout',['as' => 'getLogout', 'uses' => 'LoginController@getLogout']);
 Route::post('saveimage',['as' => 'postSaveImage', 'uses' => 'AppPlayerController@postSaveImage']);
 Route::get('saveimage',['as' => 'getSaveImage', 'uses' => 'AppPlayerController@getSaveImage']);
-
+Route::get('role-error', function(){
+    		return view('admin.error.role');
+    	});
 Route::get('playapp/{id}/{slug}',['as' => 'getPlayApp', 'uses' => 'AppController@getPlayApp'])->where('id','[0-9]+');
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'isroleadmin'], function () {
     Route::group(['prefix' => 'adminsites'], function(){
     	/*Route::get('/', function(){
     		return view('admin.dashboard.main');
@@ -60,6 +62,14 @@ Route::group(['middleware' => 'auth'], function () {
 		});
     });
    
+});
+Route::group(['middleware'=>'isroledev'], function(){
+	Route::group(['prefix' => 'devsites'], function(){
+		//Route::get('/',['as' => 'getStatistics', 'uses' => 'AdminController@getStatistics']);
+		Route::get('/', function(){
+    		return view('dev.dashboard.main');
+    	});
+	});
 });
 Route::group(['prefix' => 'apps'], function(){
     	Route::get('tencuaban',['as' => 'getResponseTenCuaBan','uses' => 'AppPlayerController@getResponseTenCuaBan']);
