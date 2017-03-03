@@ -8,16 +8,52 @@ use App\Http\Requests;
 use App\Http\Requests\AddAppRequest;
 use App\Http\Requests\AppEditRequest;
 use App\App;
+use Illuminate\Support\Facades\Auth;
 use DateTime,File;
 class AppController extends Controller
 {
-    public function getAppList($page = 1){
+    public function getAppListAdmin($page = 1){
         $numberRecord= 20;
         $vitri =($page -1 ) * $numberRecord;
         $totalApp = App::count();
         $numPages = $totalApp / $numberRecord +1;
-        $data= App::select('id','title','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+        $data= App::select('id','title','image','appurl','created_at','create_by','status')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
         return view('admin.app.app_list',['dataApp'=>$data, 'numPages' => $numPages, 'page'=> $page]);
+    }
+    public function getAppListDev($method = 'all', $page = 1){
+        $numberRecord= 20;
+        $vitri =($page -1 ) * $numberRecord;
+        $totalApp = App::count();
+        $numPages = $totalApp / $numberRecord +1;
+        $user = Auth::user()->id;
+       // echo $user;
+               switch ($method) {
+            case 'all':
+                # code...
+                $data= App::select('id','title','image','appurl','created_at','status')->where('create_by','=',$user)->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+
+                break;
+            case 'accept':
+                $data= App::select('id','title','image','appurl','created_at','status')->where('create_by','=',$user)->where('status','=','accept')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+
+            break;
+            case 'waiting':
+                $data= App::select('id','title','image','appurl','created_at','status')->where('create_by','=',$user)->where('status','=','waiting')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+
+            break;
+            case 'decide':
+                $data= App::select('id','title','image','appurl','created_at','status')->where('create_by','=',$user)->where('status','=','decide')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+
+            break;
+            case 'exceptdecide':
+                $data= App::select('id','title','image','appurl','created_at','status')->where('create_by','=',$user)->where('status','!=','decide')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+
+            break;
+            default:
+                # code...
+                break;
+        }
+        return view('dev.app.app_list',['dataApp'=>$data,'method'=>$method ,'numPages' => $numPages, 'page'=> $page]);
     }
 
     public function getPlayApp(Request $request, $id){
@@ -31,7 +67,7 @@ class AppController extends Controller
         return view('guest.playapp',["data" => $app]);
     }
     public function getAppAdd(){
-    	return view('admin.app.app_add');
+    	return view('dev.app.app_add');
     }
     public function getTestApp(){
         echo "get test app";
@@ -63,14 +99,16 @@ class AppController extends Controller
         $app->html = $request->txtHTML;
         $app->script = $request->txtJs;
     	$app->created_at = new DateTime();
+        $app->create_by = Auth::user()->id;
+        $app->status = 'waiting';
     	$app->save();
-    	return redirect()->route('getAppList')->with(['flash_level'=>'result_msg','flash_message' => 'Thêm App thành công'] );
+    	return redirect()->route('getAppListDev')->with(['flash_level'=>'result_msg','flash_message' => 'Thêm App thành công'] );
     }
-    public function getAppEdit($id){
+    public function getAppEditAdmin($id){
         $data = App::findOrFail($id)->toArray();
         return view('admin.app.app_edit',["data" => $data]);
     }
-    public function postAppEdit(AppEditRequest $request,$id){
+    public function postAppEditAdmin(AppEditRequest $request,$id){
         $app= App::find($id);
 
 
@@ -96,6 +134,37 @@ class AppController extends Controller
         $app->save();
         return redirect()->route('getAppList')->with(['flash_level'=>'result_msg','flash_message' => 'Sửa App thành công'] );
     }
+    public function getAppEditDev($id){
+        $data = App::findOrFail($id)->toArray();
+        return view('dev.app.app_edit',["data" => $data]);
+    }
+    public function postAppEditDev(AppEditRequest $request,$id){
+        $app= App::find($id);
+
+
+        $file = $request->file('inputImg');
+        if(strlen($file) >0){
+                    if(file_exists(public_path()."/mh94_upload/appimages/".$app->image)){
+            File::delete(public_path()."/mh94_upload/appimages/".$app->image);
+
+        }
+            $filename = time().'_'.$file->getClientOriginalName();
+            $destinationPath = 'mh94_upload/appimages';
+            $file->move($destinationPath,$filename);
+            $app->image= $filename;
+        }
+
+        $app->title = $request->txtTitle;
+        $app->appurl = $request->txtUrl;
+        $app->description = $request->txtDes;
+        $app->slug = str_slug($request->txtTitle, "-");
+        $app->html = $request->txtHTML;
+        $app->script = $request->txtJs;
+        $app->updated_at = new DateTime();
+        $app->save();
+        return redirect()->route('getAppListDev')->with(['flash_level'=>'result_msg','flash_message' => 'Sửa App thành công'] );
+    }
+
     public function getAppDel($id){
         $app = App::findOrFail($id);
        // echo public_path()."/mh94_upload/appimages/".$app->image;
@@ -104,8 +173,8 @@ class AppController extends Controller
 
         }
         $app->delete();
-        return redirect()->route('getAppList')->with(['flash_level'=>'result_msg','flash_message' => 'Xóa App thành công'] );
-
+      //  return redirect()->route('getAppList')->with(['flash_level'=>'result_msg','flash_message' => 'Xóa App thành công'] );
+        return "xóa thành công";
      }
     public function getAppListWithPage($page){
         $numberRecord= 12;

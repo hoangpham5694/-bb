@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="QuocTuan.Info" />
 	<link rel    ="stylesheet" href="{!! asset('public/mh94_guest/css/bootstrap.min.css')!!}">
-    <link rel="stylesheet" href="{!! asset('public/mh94_admin/templates/css/style.css')!!}" />
+    <link rel="stylesheet" href="{!! asset('public/mh94_admin/templates/css/styledev.css')!!}" />
 	<meta name="csrf-token" content="{{ Session::token() }}"> 
 
 
@@ -30,7 +30,11 @@
 					| <a href="{!! url('laravel-filemanager')!!}">Quản lý file</a>
 				</td>
 				<td align="right">
-					Xin chào {!! Auth::user()->name!!} | <a href="{!! url('adminsites/user/changepass') !!}">Đổi mật khẩu</a> | <a href="{!! url('logout') !!}">Logout</a>
+					Xin chào {!! Auth::user()->name!!} | <a href="{!! url('adminsites/user/changepass') !!}">Đổi mật khẩu</a> | 
+@if (Auth::user()->role == 1 || Auth::user()->role == 2 )
+	<a href="{!! url('adminsites') !!}">Admin mode |</a>
+@endif
+					 <a href="{!! url('logout') !!}">Logout</a>
 				</td>
 			</tr>
 		</table>

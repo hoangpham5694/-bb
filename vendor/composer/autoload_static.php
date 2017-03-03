@@ -324,6 +324,7 @@ class ComposerStaticInitef13676ec247acb75e3a0d77124afce2
         'AddHtmlandscriptToAppsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_11_082418_add_htmlandscript_to_apps_table.php',
         'AddRoleToUserTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_26_015208_add_role_to_user_table.php',
         'AddSlugToAppsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_31_125529_add_slug_to_apps_table.php',
+        'CreateAdsCodesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_03_081233_create_ads_codes_table.php',
         'CreateAppimagesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_11_084208_create_appimages_table.php',
         'CreateAppsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_28_085748_create_apps_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

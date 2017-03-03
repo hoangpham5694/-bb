@@ -29,7 +29,7 @@ class LoginController extends Controller
         if (Auth::attempt($login)) {
             // Authentication passed...
           //  dd(Auth::user()->role);
-            if(Auth::user()->role == 2){
+            if(Auth::user()->role == 2 || Auth::user()->role == 1){
                 return redirect('adminsites');
             }
             if(Auth::user()->role == 3){

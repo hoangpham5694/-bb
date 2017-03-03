@@ -4,22 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class App extends Model
+class Role extends Model
 {
-    protected $table = 'apps';
+    protected $table = 'roles';
     protected $fillable = [
-        'appurl', 'id', 'description', 'image', 'slug', 'title', 
+        'id', 'role_name'
     ];
-    public function user(){
-        return $this->belongsTo('User');
+    public function app(){
+        return $this->hasMany('User');
     }
-
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [
-        
+       
     ];
 }

@@ -30,7 +30,9 @@
 					| <a href="{!! url('laravel-filemanager')!!}">Quản lý file</a>
 				</td>
 				<td align="right">
-					Xin chào {!! Auth::user()->name!!} | <a href="{!! url('adminsites/user/changepass') !!}">Đổi mật khẩu</a> | <a href="{!! url('logout') !!}">Logout</a>
+					Xin chào {!! Auth::user()->name!!} | <a href="{!! url('adminsites/user/changepass') !!}">Đổi mật khẩu</a> |
+					<a href="{!! url('devsites') !!}">Dev mode |</a>
+					 <a href="{!! url('logout') !!}">Logout</a>
 				</td>
 			</tr>
 		</table>

@@ -4,16 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class App extends Model
+class Ads_Code extends Model
 {
-    protected $table = 'apps';
+    protected $table = 'ads_codes';
     protected $fillable = [
-        'appurl', 'id', 'description', 'image', 'slug', 'title', 
+        'id', 'name', 'code'
     ];
-    public function user(){
-        return $this->belongsTo('User');
-    }
-
+   
     /**
      * The attributes that should be hidden for arrays.
      *

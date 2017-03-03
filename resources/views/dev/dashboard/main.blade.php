@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('dev.master')
 @section('title','Trang chính')
 @section('content')
 <table class="function_table" style="margin: 0px auto;">
@@ -18,8 +18,8 @@
 				<td class="function_item cate_list"><a href="">Quản lý danh mục</a></td>
 			</tr>
 			<tr>
-				<td class="function_item news_add"><a href="{!! url('adminsites/app/add') !!}">Thêm app</a></td>
-				<td class="function_item news_list"><a href="">Quản lý tin</a></td>
+				<td class="function_item news_add"><a href="{!! url('devsites/app/add') !!}">Thêm app</a></td>
+				<td class="function_item news_list"><a href="{!! url('devsites/app/list') !!}">Quản lý app</a></td>
 			</tr>
 		</table>    
 @endsection

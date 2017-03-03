@@ -18,7 +18,7 @@
                     </script>
 <button onclick="playgame()">click me</button>
 	<a class="btn clearfix" href="{!! url('facebook/redirect')!!}" target="_blank">Đăng nhập fb</a>
-<div style="width:710px; height: 400px; border: solid gray 1px">
+<div style=" border: solid gray 1px">
     
 {!! $htmlcode !!}
 

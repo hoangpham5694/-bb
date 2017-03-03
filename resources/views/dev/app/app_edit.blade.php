@@ -1,47 +1,52 @@
 @extends('dev.master')
-@section('title','Thêm danh mục')
+@section('title','Sửa App')
 @section('content')
 		<form action="" method="POST" enctype="multipart/form-data" style="width: 650px;">
 			 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<fieldset>
-				<legend>Thêm app</legend>
-				
+				<legend>Sửa app</legend>
 				<span class="form_label">Tên app:</span>
 				<span class="form_item">
-					<input type="text" name="txtTitle" class="textbox" />
+					<input type="text" name="txtTitle" class="textbox" value="{{ $data['title'] }}" />
 				</span><br />
 				<span class="form_label">Đường dẫn:</span>
 				<span class="form_item">
-					<input type="text" name="txtUrl" class="textbox" />
+					<input type="text" name="txtUrl" id="appurl" class="textbox" value="{{ $data['appurl'] }}" />
 				</span><br />
 		
 				<span class="form_label">Mô tả:</span>
 				<span class="form_item">
-					<textarea name="txtDes" rows="8" class="textbox"></textarea>
+					<textarea name="txtDes" rows="8" class="textbox">{{ $data['description'] }}</textarea>
 				</span><br />
-								<span class="form_label">HTML Code:</span>
+		<span class="form_label">HTML Code:</span>
 				<span class="form_item">
-					<textarea name="txtHTML" rows="20" cols="100" id="htmlcode" ></textarea>
+					<textarea name="txtHTML" id="htmlcode" rows="20" cols="100" >{{ $data['html'] }}</textarea>
 				</span><br />
 								<span class="form_label">JS Code:</span>
 				<span class="form_item">
-					<textarea name="txtJs" rows="20" cols="100"  id="jscode" ></textarea>
+					<textarea name="txtJs" id="jscode" rows="20" cols="100" >{{ $data['script'] }}</textarea>
 				</span><br />
-				<span class="form_label">Hình:</span>
+
+				<span class="form_label">Hình hiện tại:</span>
+				<span class="form_item">
+					<img src="{!! asset('public/mh94_upload/appimages')!!}/{{ $data['image'] }}" width="100px" />
+				</span><br />
+				<span class="form_label">Hình :</span>
 				<span class="form_item">
 					<input type="file" name="inputImg" class="textbox" />
 				</span><br />
-					<span class="form_item">
+						<span class="form_label"></span>
+				<span class="form_item">
 					<input type="button" id="btnTestApp" value="Chạy thử" class="button" />
 				</span>
 				<span class="form_label"></span>
 				<span class="form_item">
-					<input type="submit" name="btnNewsAdd" value="Thêm app" class="button" />
+					<input type="submit" name="btnNewsEdit" value="Sửa" class="button" />
 				</span>
 			</fieldset>
 		</form>
 
-<div class="modal fade bs-example-modal-lg" id="ModalTestApp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	<div class="modal fade bs-example-modal-lg" id="ModalTestApp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content" >
           <div class="modal-header">
@@ -62,7 +67,7 @@
 	$(document).ready(function($) {
 		$("#btnTestApp").click(function() {
 			/* Act on the event */
-			var url= "{!! asset('/')!!}" + "adminsites/app/testapp";
+			var url= "{!! asset('/')!!}" + "devsites/app/testapp";
 			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     			$.ajax({
 								url:url,
@@ -71,6 +76,7 @@
 									'contentType': 'application/upload',
 								},
 								data:{ '_token': CSRF_TOKEN,
+								title: "{{ $data['title'] }}",
 								appurl : $('#appurl').val(),
 								htmlcode: $("#htmlcode").val(),
 								jscode: $("#jscode").val(),

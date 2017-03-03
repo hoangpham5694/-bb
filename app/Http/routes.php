@@ -51,15 +51,19 @@ Route::group(['middleware' => 'isroleadmin'], function () {
 			Route::get('add',['as' => 'getAdd','uses'=>'CateController@getAdd']);
 		});
 		Route::group(['prefix' => 'app'], function(){
-			Route::get('add',['as' => 'getAddApp', 'uses' => 'AppController@getAppAdd']);
-			Route::post('add',['as' => 'postAddApp', 'uses' => 'AppController@postAppAdd']);
-			Route::get('list/{page?}',['as'=>'getAppList', 'uses' => 'AppController@getAppList'])->where('page','[0-9]+');;
-			Route::get('edit/{id}',['as'=>'getAppEdit', 'uses' => 'AppController@getAppEdit'])->where('id','[0-9]+');
-			Route::post('edit/{id}',['as' => 'postAddEdit', 'uses' => 'AppController@postAppEdit'])->where('id','[0-9]+');
-			Route::get('delete/{id}',['as'=>'getAppDel', 'uses' => 'AppController@getAppDel'])->where('id','[0-9]+');
-			Route::post('testapp',['as'=>'postTestApp', 'uses' => 'AppController@postTestApp']);
-			Route::get('testapp',['as'=>'getTestApp', 'uses' => 'AppController@getTestApp']);
+
+			Route::get('list/{method?}/{page?}',['as'=>'getAppListAdmin', 'uses' => 'AppController@getAppListAdmin'])->where('page','[0-9]+');
+			Route::get('edit/{id}',['as'=>'getAppEditAdmin', 'uses' => 'AppController@getAppEditAdmin'])->where('id','[0-9]+');
+			Route::post('edit/{id}',['as' => 'postAddEditAdmin', 'uses' => 'AppController@postAppEditAdmin'])->where('id','[0-9]+');
+		//	Route::get('delete/{id}',['as'=>'getAppDel', 'uses' => 'AppController@getAppDel'])->where('id','[0-9]+');
+		//	Route::post('testapp',['as'=>'postTestApp', 'uses' => 'AppController@postTestApp']);
+		//	Route::get('testapp',['as'=>'getTestApp', 'uses' => 'AppController@getTestApp']);
 		});
+		Route::group(['prefix' => 'ads'], function(){
+			Route::get('list',['as'=>'getAppListAdmin', 'uses' => 'AppController@getAppListAdmin']);
+
+		});
+
     });
    
 });
@@ -69,6 +73,16 @@ Route::group(['middleware'=>'isroledev'], function(){
 		Route::get('/', function(){
     		return view('dev.dashboard.main');
     	});
+    	Route::group(['prefix' => 'app'], function(){
+			Route::get('add',['as' => 'getAddApp', 'uses' => 'AppController@getAppAdd']);
+			Route::post('add',['as' => 'postAddApp', 'uses' => 'AppController@postAppAdd']);
+			Route::get('list/{method?}/{page?}',['as'=>'getAppListDev', 'uses' => 'AppController@getAppListDev'])->where('page','[0-9]+');;
+			Route::get('edit/{id}',['as'=>'getAppEditDev', 'uses' => 'AppController@getAppEditDev'])->where('id','[0-9]+');
+			Route::post('edit/{id}',['as' => 'postAddEditDev', 'uses' => 'AppController@postAppEditDev'])->where('id','[0-9]+');
+			Route::get('delete/{id}',['as'=>'getAppDel', 'uses' => 'AppController@getAppDel'])->where('id','[0-9]+');
+			Route::post('testapp',['as'=>'postTestApp', 'uses' => 'AppController@postTestApp']);
+			Route::get('testapp',['as'=>'getTestApp', 'uses' => 'AppController@getTestApp']);
+		});
 	});
 });
 Route::group(['prefix' => 'apps'], function(){

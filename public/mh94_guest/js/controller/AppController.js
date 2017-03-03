@@ -1,14 +1,18 @@
 app.controller('AppController', function($scope ,$http,$location, API){
 	var page = 1;
 	var pagehot = 1;
+	var end= true;
 	var getApp = function(url){
 		$http.get(url).then(function successCallback (response){
 		console.log(response);
 		console.log(page);
 		$scope.data =   response.data;
 		if(response.data.length < 12){
-  			page--;
-  			$scope.message = "Hết dữ liệu vui lòng quay lại";
+  			//page--;
+  			end= true;
+  			//$scope.message = "Hết dữ liệu vui lòng quay lại";
+  		}else{
+  			end= false;
   		}
 		}  , function errorCallback(response) {
     // called asynchronously if an error occurs
@@ -77,8 +81,11 @@ app.controller('AppController', function($scope ,$http,$location, API){
 		console.log(state);
 		switch (state){
 			case "new":
-				page++;
-				getApp(API + "listapp/"+ page);	
+				if(!end){
+					page++;
+					getApp(API + "listapp/"+ page);	
+				}
+				
 				break;
 			case "hot":
 				pagehot++;
@@ -97,6 +104,7 @@ app.controller('AppController', function($scope ,$http,$location, API){
 	$scope.previouspage = function(state){
 		$scope.state = state;
 		console.log(state);
+		console.log(page);
 		if(page >1){
 			page--;
 			switch (state){

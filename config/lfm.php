@@ -2,7 +2,7 @@
 
 return [
     // If true, the uploaded file will be renamed to uniqid() + file extension.
-    'rename_file'           => false,
+    'rename_file'           => true,
 
     // If rename_file set to false and this set to true, then non-alphanumeric characters in filename will be replaced.
     'alphanumeric_filename' => true,
@@ -12,7 +12,7 @@ return [
     'use_package_routes'    => true,
 
     // For laravel 5.1, please set to ['auth']
-    'middlewares'           => ['web','auth'],
+    'middlewares'           => ['web','isroledev'],
 
     // Add prefix for routes
     'prefix'           => 'laravel-filemanager',
@@ -25,7 +25,7 @@ return [
     // When set to 'id', the private folder will be named as the user id.
     // NOTE: make sure to use an unique field.
     // When choosing a startup view you can fill either 'grid' or 'list'.
-    'user_field'            => 'id',
+    'user_field'            => 'username',
 
     'shared_folder_name'    => 'shares',
     'thumb_folder_name'     => 'thumbs',
