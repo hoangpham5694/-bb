@@ -254,7 +254,7 @@
 	 				</div>
 	 				<button  class="btn share-btn clearfix">Share kết quả lên tường</Button>
 	 				<div class="ads">
-	 					<img src="{!! asset('public/mh94_guest/images/aa.jpg')!!}" alt="">
+	 					{!! $ads1['code'] !!}
 	 				</div>
 	 				<div class="view-result">
 	 				@if(Session::has('user'))
@@ -269,7 +269,7 @@
 	 					
 	 				</div>
 	 					<div class="ads">
-	 					<img src="{!! asset('public/mh94_guest/images/bbbb.jpg')!!}" alt="">
+	 					{!! $ads3['code'] !!}
 	 				</div>
 	 			</div>
 	 			<div class="nc-title">
@@ -305,7 +305,7 @@
 	 		</div>
 	 		</div>
 	 		<div class="ads">
-	 			<img src="{!! asset('public/mh94_guest/images/ccc.jpg')!!}" alt="">
+	 		{!! $ads4['code'] !!}
 	 		</div>
 		</div>
 		<div class="clear-fix"></div>

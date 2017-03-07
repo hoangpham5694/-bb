@@ -10,6 +10,7 @@ use App\Http\Requests\AppEditRequest;
 use App\App;
 use Illuminate\Support\Facades\Auth;
 use DateTime,File;
+use App\Ads_Code;
 class AppController extends Controller
 {
     public function getAppListAdmin($page = 1){
@@ -61,10 +62,12 @@ class AppController extends Controller
         $app->view = $app->view +1;
         $app->save();
         $app = App::findOrFail($id)->toArray();
-
+        $ads1 = Ads_Code::findOrFail(1)->toArray();
+        $ads3 = Ads_Code::findOrFail(3)->toArray();
+        $ads4 = Ads_Code::findOrFail(4)->toArray();
         $backurl= 'playapp/'.$id.'/'.$app['slug'].'.html';
         $request->session()->put('backurl', $backurl);
-        return view('guest.playapp',["data" => $app]);
+        return view('guest.playapp',["data" => $app,"data" => $app,"ads1" => $ads1,"ads3"=> $ads3,"ads4"=> $ads4]);
     }
     public function getAppAdd(){
     	return view('dev.app.app_add');

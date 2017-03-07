@@ -19,4 +19,5 @@ class Ads_Code extends Model
     protected $hidden = [
         
     ];
+    public $timestamps = false;
 }

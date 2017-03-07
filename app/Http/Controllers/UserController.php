@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function getUserList(){
-    	$data = User::select('id','username','name')->get()->toArray();
+    	$data = User::select('id','username','name','role')->get()->toArray();
     	//print_r($data);
     	return view('admin.users.user_list',['data'=>$data]);
     }

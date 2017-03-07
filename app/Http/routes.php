@@ -60,7 +60,12 @@ Route::group(['middleware' => 'isroleadmin'], function () {
 		//	Route::get('testapp',['as'=>'getTestApp', 'uses' => 'AppController@getTestApp']);
 		});
 		Route::group(['prefix' => 'ads'], function(){
-			Route::get('list',['as'=>'getAppListAdmin', 'uses' => 'AppController@getAppListAdmin']);
+			Route::get('list',['as'=>'getAdsList', 'uses' => 'AdsController@getAdsList']);
+			Route::get('add',['as'=>'getAdsAdd','uses'=> 'AdsController@getAdsAdd']);
+			Route::post('add',['as'=>'postAdsAdd','uses'=> 'AdsController@postAdsAdd']);
+			Route::get('edit/{id}',['as'=>'getAdsEdit','uses'=> 'AdsController@getAdsEdit']);
+			Route::post('edit/{id}',['as'=>'postAdsEdit','uses'=> 'AdsController@postAdsEdit']);
+			Route::get('delete/{id}',['as'=>'getAdsDelete', 'uses' =>'AdsController@getAdsDelete'])->where('id','[0-9]+');
 
 		});
 

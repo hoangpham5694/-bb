@@ -20,7 +20,8 @@
 					<div class="total-panel" ng-controller="AppController" >
 	
 				<div class="ads">
-					<img src="{!! asset('public/mh94_guest/images/aa.jpg')!!}" alt="">
+					
+					{!! $ads2['code'] !!}
 				</div>
 
 
@@ -80,15 +81,7 @@
 
     
   </div>
-				    <script>
-$(document).ready(function(){
-    $(".nav-tabs a").click(function(){
-  
-        $(this).tab('show');
-    });
-});
-</script>
-		
+
 			</div>
 
 @endsection
