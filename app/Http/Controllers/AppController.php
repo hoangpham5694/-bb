@@ -13,13 +13,22 @@ use DateTime,File;
 use App\Ads_Code;
 class AppController extends Controller
 {
-    public function getAppListAdmin($page = 1){
+    public function getAppListAdmin($method = 'all',$page = 1){
         $numberRecord= 20;
         $vitri =($page -1 ) * $numberRecord;
         $totalApp = App::count();
         $numPages = $totalApp / $numberRecord +1;
-        $data= App::select('id','title','image','appurl','created_at','create_by','status')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
-        return view('admin.app.app_list',['dataApp'=>$data, 'numPages' => $numPages, 'page'=> $page]);
+        switch($method){
+            case 'all':
+                $data= App::Join('users','users.id','=','apps.create_by')->select('apps.id','apps.title','apps.image','apps.appurl','apps.created_at','apps.create_by','apps.status','users.username')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+
+            break;
+            default:
+                   $data= App::Join('users','users.id','=','apps.create_by')->select('apps.id','apps.title','apps.image','apps.appurl','apps.created_at','apps.create_by','apps.status','users.username')->where('status','=',$method)->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+
+            break;
+        }
+              return view('admin.app.app_list',['dataApp'=>$data,'method'=>$method, 'numPages' => $numPages, 'page'=> $page]);
     }
     public function getAppListDev($method = 'all', $page = 1){
         $numberRecord= 20;

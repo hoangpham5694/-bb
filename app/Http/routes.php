@@ -43,9 +43,13 @@ Route::group(['middleware' => 'isroleadmin'], function () {
 		Route::get('/',['as' => 'getStatistics', 'uses' => 'AdminController@getStatistics']);
 		Route::group(['prefix' => 'user'], function(){
 			Route::get('/', ['as' => 'getUserList', 'uses' => 'UserController@getUserList']);
-			Route::get('list', ['as' => 'getUserList', 'uses' => 'UserController@getUserList']);
+			Route::get('list/{method?}', ['as' => 'getUserList', 'uses' => 'UserController@getUserList']);
 			Route::get('changepass',['as' => 'getChangePass', 'uses' =>'UserController@getChangePass']);
 			Route::post('changepass',['as' => 'postChangePass', 'uses' =>'UserController@postChangePass']);
+			Route::get('edit/{id}',['as'=> 'getUserEdit', 'uses'=> 'UserController@getUserEdit'])->where('id','[0-9]+');
+			Route::post('edit/{id}',['as'=> 'postUserEdit', 'uses'=> 'UserController@postUserEdit'])->where('id','[0-9]+');
+			Route::get('add',['as'=> 'getUserAdd', 'uses' => 'UserController@getUserAdd']);
+			Route::post('add',['as'=> 'postUserAdd', 'uses' => 'UserController@postUserAdd']);
 		});
 		Route::group(['prefix' => 'category'], function(){
 			Route::get('add',['as' => 'getAdd','uses'=>'CateController@getAdd']);
