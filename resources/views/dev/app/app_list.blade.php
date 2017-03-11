@@ -22,7 +22,9 @@
             @foreach($dataApp as $app)
                 <tr class="list_data">
                 <td class="aligncenter">{{ $app["id"] }}</td>
-                <td class="list_td aligncenter">{!! $app["title"] !!}</td>
+                <td class="list_td aligncenter">
+                    <a href="{{ url('devsites/app/testappid') }}/{{ $app['id'] }}"> {!! $app["title"] !!}</td></a>
+                   
                 <td class="list_td aligncenter">{!! $app["appurl"] !!}</td>
                 <td class="list_td aligncenter">
                     <?php \Carbon\Carbon::setLocale('vi');?>
@@ -32,7 +34,7 @@
                 <td>
                     {!! $app["status"] !!}
                     @if($app["status"] == "decide")
-                        <a href="">Xin duyệt lại</a>
+                        <a href="" onclick="return xacnhanxoa('Xin duyệt lại app {{ $app['id'] }}?',{{ $app['id'] }},'{{ url('adminsites/app/set/waiting/') }}' );">Xin duyệt lại</a>
                     @endif
                 </td>
                 <td class="list_td aligncenter">

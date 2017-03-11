@@ -62,6 +62,12 @@ Route::group(['middleware' => 'isroleadmin'], function () {
 		//	Route::get('delete/{id}',['as'=>'getAppDel', 'uses' => 'AppController@getAppDel'])->where('id','[0-9]+');
 		//	Route::post('testapp',['as'=>'postTestApp', 'uses' => 'AppController@postTestApp']);
 		//	Route::get('testapp',['as'=>'getTestApp', 'uses' => 'AppController@getTestApp']);
+			Route::group(['prefix' => 'set'], function(){
+				Route::get('accept/{id}',['as' => 'getAppSetAccept', 'uses'=> 'AppController@getAppSetAccept']);
+				Route::get('decide/{id}',['as' => 'getAppSetDecide', 'uses'=> 'AppController@getAppSetDecide']);
+				Route::get('waiting/{id}',['as' => 'getAppSetWaiting', 'uses'=> 'AppController@getAppSetWaiting']);
+						
+			});
 		});
 		Route::group(['prefix' => 'ads'], function(){
 			Route::get('list',['as'=>'getAdsList', 'uses' => 'AdsController@getAdsList']);
@@ -91,6 +97,10 @@ Route::group(['middleware'=>'isroledev'], function(){
 			Route::get('delete/{id}',['as'=>'getAppDel', 'uses' => 'AppController@getAppDel'])->where('id','[0-9]+');
 			Route::post('testapp',['as'=>'postTestApp', 'uses' => 'AppController@postTestApp']);
 			Route::get('testapp',['as'=>'getTestApp', 'uses' => 'AppController@getTestApp']);
+			Route::get('testappid/{id}',['as' => 'getTestAppId', 'uses'=>'AppController@getTestAppId']);
+			
+			
+			
 		});
 	});
 });

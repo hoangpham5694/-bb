@@ -81,6 +81,10 @@ class AppController extends Controller
     public function getAppAdd(){
     	return view('dev.app.app_add');
     }
+    public function getTestAppId($id){
+        $app= App::find($id);
+        return view('dev.app.test_app',["data" => $app]);
+    }
     public function getTestApp(){
         echo "get test app";
     }
@@ -225,6 +229,26 @@ class AppController extends Controller
         $app = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset(0)->get();;
         return json_encode($app);
     }
-
+    public function getAppSetAccept($id){
+        $app = App::findOrFail($id);
+        $app->status = "accept";
+        $app->save();
+        $message = "App ".$app->id." chuyển sang accept";
+        return $message;
+    }
+    public function getAppSetWaiting($id){
+        $app = App::findOrFail($id);
+        $app->status = "waiting";
+        $app->save();
+        $message = "App ".$app->id." chuyển sang 'waiting'";
+        return $message;
+    }
+    public function getAppSetDecide($id){
+        $app = App::findOrFail($id);
+        $app->status = "decide";
+        $app->save();
+        $message = "App ".$app->id." chuyển sang 'decide'";
+        return $message;
+    }
 
 }
