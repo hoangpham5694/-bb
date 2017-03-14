@@ -151,7 +151,7 @@ class AppController extends Controller
         $app->script = $request->txtJs;
         $app->updated_at = new DateTime();
         $app->save();
-        return redirect()->route('getAppList')->with(['flash_level'=>'result_msg','flash_message' => 'Sửa App thành công'] );
+        return redirect()->route('getAppListAdmin')->with(['flash_level'=>'result_msg','flash_message' => 'Sửa App thành công'] );
     }
     public function getAppEditDev($id){
         $data = App::findOrFail($id)->toArray();

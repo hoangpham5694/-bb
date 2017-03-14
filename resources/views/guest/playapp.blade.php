@@ -86,6 +86,7 @@
 						$(".begin-game").show();
 						$(".loading-game").hide();
 						$(".share-btn").hide();
+						$("#canvas-img").hide();
 						$(".viewBtn").click(function() {
 							filldata();
 							$(".begin-game").hide();
@@ -96,6 +97,7 @@
 								$(".loading-game").hide();
 								$(".game-result").show();
 								$body.addClass("loading");
+							
 								html2canvas($(".game-result"), {
 									
 									
@@ -142,10 +144,11 @@
 								$("#img-result").attr({
 									src: url
 								});
-
+								$("#canvas-img").show();
 								$(".share-btn").show();
 								$(".title").hide();
 								$body.removeClass("loading");
+
 							});
 
     							

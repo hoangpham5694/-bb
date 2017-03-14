@@ -14,11 +14,14 @@ class AppPlayerController extends Controller
     public function getSaveImage(Request $request){
         echo "get save";
     }
+
     public function postSaveImage(Request $request){
      //   $data = Input::all();
         //echo $request->canvasimg;
         
         $file = base64_decode( substr($request->canvasimg, strpos($request->canvasimg, ",")+1));
+        $image = imagecreatefromstring($file);
+        $image = resize($image, 500, 300);
         $folderName = '/mh94_apps/';
         if($request->session()->has('user')){
             $data  = $request->session()->get('user');
@@ -26,8 +29,11 @@ class AppPlayerController extends Controller
             $destinationPath = public_path() . $folderName;
             //echo $destinationPath;
             $success = file_put_contents($destinationPath.$safeName, $file);
+          //  $success = file_put_contents($destinationPath.$safeName, $image);
             //$file->move($destinationPath,$safeName);
-            
+    
+$imgFileName = $destinationPath.$safeName;
+SaveImage($image,$imgFileName);
 
         return $safeName;
            

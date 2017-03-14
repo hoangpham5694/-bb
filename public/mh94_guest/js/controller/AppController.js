@@ -46,7 +46,7 @@ app.controller('AppController', function($scope ,$http,$location, API){
     // or server returns response with an error status.
   		}) ;
 	}
-	var getList5New = function(){
+/*	var getList5New = function(){
 		$http.get(API+'list5new').then(function successCallback (response){
 		console.log(response);
 		$scope.data5New =  response.data;
@@ -66,8 +66,9 @@ app.controller('AppController', function($scope ,$http,$location, API){
     // or server returns response with an error status.
   		}) ;
 	}
-	getLastApp();
-	getList5New();
+	*/
+	//getLastApp();
+	//getList5New();
 	getAppRandom();
 	getAppHot(API + "listhot/"+ pagehot);
 	$scope.name="hoang";
