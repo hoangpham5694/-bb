@@ -28,8 +28,12 @@
 
 	background: url("{!! asset('public/mh94_guest/images/bg1.svg')!!}");
 }
-
-
+.game-result{
+	width:730px;
+}
+#canvas-img img{
+	width:100%;
+}
 </style>
 	@endsection
 @section('content')
@@ -86,14 +90,13 @@
 							filldata();
 							$(".begin-game").hide();
 							$(".loading-game").show();
-							
-
+							 
+							$(".viewBtn").hide();
 							setTimeout(function(){
 								$(".loading-game").hide();
 								$(".game-result").show();
-								$(".viewBtn").hide();
-								$(".share-btn").show();
-					/*			html2canvas($(".game-result"), {
+								$body.addClass("loading");
+								html2canvas($(".game-result"), {
 									
 									
         						//	allowTaint: true,
@@ -102,10 +105,11 @@
         							proxy:"{!! asset('/') !!}/html2canvasproxy.php",
     "onrendered": function(canvas) {
        // alert(canvas);
+       
         var url = canvas.toDataURL("image/png");
-        window.open(url, "_blank");
+      //  window.open(url, "_blank");
      var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-     				$.ajax({
+     	/*			$.ajax({
 								url:"{!! url('saveimage')!!}",
 								type:"POST",
 								header:{
@@ -117,15 +121,15 @@
 								
 								
 								success: function (data) {console.log(data);
-									picname = '{!! asset('public/mh94_apps') !!}' +'/' + data;
-									console.log(picname);
-									sharefb(picname);
+								//	picname = '{!! asset('public/mh94_apps') !!}' +'/' + data;
+								//	console.log(picname);
+								//	sharefb(picname);
 
 								 },
 								error: function (data) {console.log(data); },
 
 							})  
-
+*/
 
 
 
@@ -133,10 +137,19 @@
     }
 
     							}).then(function(canvas){
-								$("#canvas-img").html(canvas);
-							});*/
+    								$(".game-result").hide();
+    							 var url = canvas.toDataURL("image/png");
+								$("#img-result").attr({
+									src: url
+								});
+
+								$(".share-btn").show();
+								$(".title").hide();
+								$body.removeClass("loading");
+							});
+
     							
-							}, 2000);
+							}, 3000);  
 
 							
 							
@@ -145,7 +158,37 @@
 						$(".share-btn,.share-img").click(function(){
 							var picname="";
 							$body.addClass("loading"); 
-							html2canvas($(".game-result"), {
+							var dataURL = $("#img-result").attr("src");
+						//	var dataURL = url;
+							//console.log(url);
+							var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+								$.ajax({
+								url:"{!! url('saveimage')!!}",
+								type:"POST",
+								header:{
+									'contentType': 'application/upload',
+								},
+								data:{ '_token': CSRF_TOKEN,
+								title: "{!! $data['slug']!!}",
+								canvasimg : dataURL },
+								
+								
+								success: function (data) {console.log(data);
+									picname = '{!! asset('public/mh94_apps') !!}' +'/' + data;
+									console.log(picname);
+									$body.removeClass("loading");
+									sharefb(picname);
+
+								 },
+								error: function (data) {console.log(data); },
+
+							})  
+
+
+					
+
+
+					/*		html2canvas($(".game-result"), {
 									
 								//	userCORS:true,
         							//allowTaint: true,
@@ -168,7 +211,10 @@
 									
 									}, function(data) {
 									console.log(data);
-								});*/
+								});
+						******/ //hàm này bỏ
+						/*
+
 							$.ajax({
 								url:"{!! url('saveimage')!!}",
 								type:"POST",
@@ -193,6 +239,8 @@
 
 
 						});
+
+	*/
 
 							
 						
@@ -234,7 +282,9 @@
 							{!! $data['html']!!}
 							{!! $data['script'] !!}	
 	 					</div>
-	 					<div id="canvas-img" onresize="resize_canvas()" ></div>
+	 					<div id="canvas-img" onresize="resize_canvas()" >
+	 						<img id="img-result" src="" alt="">
+	 					</div>
 	 					<div class="loading-game">
 	 						<h1>Loading......</h1>
 	 						<img src="{!! asset('public/mh94_guest/images/app_load.gif')!!}" width="100px" alt="">

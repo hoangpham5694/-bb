@@ -2,7 +2,7 @@
 
 return [
     // If true, the uploaded file will be renamed to uniqid() + file extension.
-    'rename_file'           => true,
+    'rename_file'           => false,
 
     // If rename_file set to false and this set to true, then non-alphanumeric characters in filename will be replaced.
     'alphanumeric_filename' => true,
@@ -38,8 +38,8 @@ return [
     'files_url'             => '/files/',
     'files_startup_view'    => 'grid',
 
-    'max_image_size' => 500,
-    'max_file_size' => 1000,
+    'max_image_size' => 5000,
+    'max_file_size' => 10000,
 
     // available since v1.3.0
     'valid_image_mimetypes' => [

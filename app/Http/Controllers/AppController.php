@@ -68,6 +68,9 @@ class AppController extends Controller
 
     public function getPlayApp(Request $request, $id){
         $app= App::find($id);
+        if($app->status != "accept"){
+            return view('errors.503',['message'=>"Xin lỗi! Trang bạn tìm kiếm không tồn tại."]);
+        }
         $app->view = $app->view +1;
         $app->save();
         $app = App::findOrFail($id)->toArray();
@@ -195,7 +198,7 @@ class AppController extends Controller
     public function getAppListWithPage($page){
         $numberRecord= 12;
         $vitri =($page -1 ) * $numberRecord;
-        $data = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get();
+        $data = App::select('id','title','description','slug','view','image','appurl','created_at')->where('status','=','accept')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get();
      //  $numberRecord = $numberRecord * $page;
      //  $data = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->get();
         return  json_encode($data);
@@ -210,25 +213,17 @@ class AppController extends Controller
     }
     public function getListAppRandom(){
         $numberRecord = 5;
-        $app = App::select('id','title','description','slug','view','image','appurl','created_at')->inRandomOrder()->limit($numberRecord)->offset(0)->get();;
+        $app = App::select('id','title','description','slug','view','image','appurl','created_at')->where('status','=','accept')->inRandomOrder()->limit($numberRecord)->offset(0)->get();;
         return json_encode($app);
     }
     public function getSearchApp($keyword){
         $keyword = "%".$keyword."%";
         $numberRecord = 10;
-        $app = App::select('id','title','description','slug','view','image','appurl','created_at')->where('title', 'LIKE', $keyword)->limit($numberRecord)->offset(0)->get();;
+        $app = App::select('id','title','description','slug','view','image','appurl','created_at')->where('status','=','accept')->where('title', 'LIKE', $keyword)->limit($numberRecord)->offset(0)->get();;
         return json_encode($app);
     }
-    public function getList5New(){
-        $numberRecord = 4;
-        $app = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset(1)->get();;
-        return json_encode($app);
-    }
-    public function getLastApp(){
-        $numberRecord = 1;
-        $app = App::select('id','title','description','slug','view','image','appurl','created_at')->orderBy('id','DESC')->limit($numberRecord)->offset(0)->get();;
-        return json_encode($app);
-    }
+   
+   
     public function getAppSetAccept($id){
         $app = App::findOrFail($id);
         $app->status = "accept";

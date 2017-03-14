@@ -598,7 +598,8 @@ body.loading .modal {
     display: block;
 }
 .game-result{
-    width:730px;
+   /* width:100%;*/
+   width:730px;
 }
 
 .ads{
@@ -626,6 +627,7 @@ body.loading .modal {
     padding: 15px 20px;
     font-size: 23px;
     border-radius: 0px;
+    width:100%;
 }
 .share-btn:hover{
     color: #fff;
@@ -643,4 +645,7 @@ body.loading .modal {
 }
 .group-btn .btn-next{
     float:right;
+}
+.viewBtn{
+    width:100%;
 }

@@ -17,7 +17,7 @@
                 color: #B0BEC5;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato', sans-serif;
+                font-family: 'Arial', sans-serif;
             }
 
             .container {
@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <div class="title">{{ $message }}</div>
             </div>
         </div>
     </body>
