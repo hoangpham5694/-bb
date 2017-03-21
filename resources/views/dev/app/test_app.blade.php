@@ -69,8 +69,8 @@
 <button onclick="playgame()">click me</button>
 <button id="canvas">Canvas</button>
 	<a class="btn clearfix" href="{!! url('facebook/redirect')!!}" target="_blank">Đăng nhập fb</a>
-<div style=" border: solid gray 1px">
-   <div class="game-result">
+<div>
+   <div style="width:730px; border: solid gray 1px" class="game-result">
        {!! $data['html'] !!}
        {!! $data['script'] !!}
    </div>

@@ -67,7 +67,7 @@
 	$(document).ready(function($) {
 		$("#btnTestApp").click(function() {
 			/* Act on the event */
-			var url= "{!! asset('/')!!}" + "adminsites/app/testapp";
+			var url= "{!! asset('/')!!}" + "devsites/app/testapp";
 			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     			$.ajax({
 								url:url,

@@ -8,7 +8,7 @@
  */
 
 //Turn off errors because the script already own uses "error_get_last"
-ini_set('display_errors', 'Off');
+ini_set('display_errors', 'on');
 
 //setup
 define('PATH', 'photos/shares/proxyimages');         //relative folder where the images are saved
