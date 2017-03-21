@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{!! asset('public/elfinder/css/theme.css')!!}">
     <script src  ="<?php echo asset('public/mh94_guest/js/lib/bootstrap.min.js') ; ?>"></script>
 	<title>Test app</title>
+
+ <script type="text/javascript" src=<?php echo asset('public/mh94_guest/js/lib/html2canvas.js') ; ?>> </script>
 </head>
 
 <body>
@@ -23,6 +25,39 @@
  
                     </form>
                     <script>
+                    $(document).ready(function($) {
+                           $("#canvas").click(function(event) {
+                                    html2canvas($(".game-result"), {
+                                    
+                                    
+                                //  allowTaint: true,
+                                //  userCORS:true,
+                                    logging:true,
+                                    proxy:"{!! asset('/') !!}/html2canvasproxy.php",
+    "onrendered": function(canvas) {
+ 
+       
+        var url = canvas.toDataURL("image/png");
+      //  window.open(url, "_blank");
+     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+       
+
+
+
+
+    }
+
+                                }).then(function(canvas){
+                                  
+                                 var url = canvas.toDataURL("image/png");
+                                $("#cand").attr({
+                                    src: url
+                                });
+
+
+                            });
+                           });
+                    });
                     var appurl = "{!! $data['appurl'] !!}";
                     var API = "{!! asset('/')!!}";
 
@@ -32,15 +67,21 @@
 
                     </script>
 <button onclick="playgame()">click me</button>
+<button id="canvas">Canvas</button>
 	<a class="btn clearfix" href="{!! url('facebook/redirect')!!}" target="_blank">Đăng nhập fb</a>
 <div style=" border: solid gray 1px">
-    
-{!! $data['html'] !!}
+   <div class="game-result">
+       {!! $data['html'] !!}
+       {!! $data['script'] !!}
+   </div>
+
 
 </div>
 
-<div id="cand"></div>
-{!! $data['script'] !!}
+<img src="" id="cand" alt="">
+    
+
+
 
 </body>
 </html>

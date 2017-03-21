@@ -8,11 +8,11 @@
 				
 				<span class="form_label">Tên app:</span>
 				<span class="form_item">
-					<input type="text" name="txtTitle" class="textbox" />
+					<input type="text" id="txtTitle" name="txtTitle" class="textbox" />
 				</span><br />
 				<span class="form_label">Đường dẫn:</span>
 				<span class="form_item">
-					<input type="text" name="txtUrl" class="textbox" />
+					<input type="text" id="txtUrl" name="txtUrl" class="textbox" />
 				</span><br />
 		
 				<span class="form_label">Mô tả:</span>
@@ -60,6 +60,7 @@
 </div>
 	<script>
 	$(document).ready(function($) {
+	
 		$("#btnTestApp").click(function() {
 			/* Act on the event */
 			var url= "{!! asset('/')!!}" + "adminsites/app/testapp";

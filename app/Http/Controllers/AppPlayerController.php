@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Http\Component\GenerateImage;
 use Illuminate\Http\Response;
+use File;
 class AppPlayerController extends Controller
 {
 
@@ -26,6 +27,10 @@ class AppPlayerController extends Controller
         if($request->session()->has('user')){
             $data  = $request->session()->get('user');
             $safeName = $data->id.'_'.$request->title.'.'.'png';
+            if(file_exists(public_path().$folderName.$safeName)){
+                File::delete(public_path().$folderName.$safeName);
+
+            }
             $destinationPath = public_path() . $folderName;
             //echo $destinationPath;
             $success = file_put_contents($destinationPath.$safeName, $file);

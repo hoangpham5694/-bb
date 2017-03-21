@@ -8,11 +8,11 @@
 				
 				<span class="form_label">Tên app:</span>
 				<span class="form_item">
-					<input type="text" name="txtTitle" class="textbox" />
+					<input type="text" id="txtTitle" name="txtTitle" class="textbox" />
 				</span><br />
 				<span class="form_label">Đường dẫn:</span>
 				<span class="form_item">
-					<input type="text" name="txtUrl" class="textbox" />
+					<input type="text" id="txtUrl" name="txtUrl" class="textbox" />
 				</span><br />
 		
 				<span class="form_label">Mô tả:</span>
@@ -60,6 +60,33 @@
 </div>
 	<script>
 	$(document).ready(function($) {
+			$("#txtTitle").blur(function(){
+				var username = '{!! Auth::user()->username!!}';
+				var url = "photos/"+ username +"/";
+			console.log($(this).val());
+    var title = $(this).val();
+     slug = title.toLowerCase();
+ 
+    //Đổi ký tự có dấu thành không dấu
+    slug = slug.toLowerCase(); 
+    slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+    slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+    slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+    slug = slug.replace(/đ/gi, 'd');
+    slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+    slug = slug.replace(/ /gi, "-");
+    slug = slug.replace(/\-\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-/gi, '-');
+    slug = '@' + slug + '@';
+    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+    $("#txtUrl").val(url+ slug);    
+});
 		$("#btnTestApp").click(function() {
 			/* Act on the event */
 			var url= "{!! asset('/')!!}" + "adminsites/app/testapp";

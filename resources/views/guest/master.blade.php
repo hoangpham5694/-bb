@@ -8,7 +8,7 @@
 	@yield('title')
 	<link rel="stylesheet" href="{!! asset('public/mh94_guest/css/style.css')!!}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script type="text/javascript" src=<?php echo asset('public/mh94_guest/js/lib/html2canvas.js') ; ?>> </script>
+
 </head>
 <body ng-app="my-app" >
 <div id="fb-root"></div>

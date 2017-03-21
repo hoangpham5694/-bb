@@ -26,7 +26,7 @@
 		<table width="100%">
 			<tr>
 				<td>
-					<a href="{!! url('devsites')!!}">Trang chính</a> | <a href="{!! url('adminsites/user')!!}">Quản lý user</a> | <a href="">Quản lý danh mục</a> | <a href="{!! url('adminsites/app/list')!!}">Quản lý app</a>
+					<a href="{!! url('devsites')!!}">Trang chính</a>  | <a href="{!! url('devsites/app/list')!!}">Quản lý app</a>
 					| <a href="{!! url('laravel-filemanager')!!}">Quản lý file</a>
 				</td>
 				<td align="right">
