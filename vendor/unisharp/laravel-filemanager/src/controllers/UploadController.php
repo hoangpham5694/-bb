@@ -21,8 +21,8 @@ class UploadController extends LfmController {
     private $default_file_types = ['application/pdf'];
     private $default_image_types = ['image/jpeg', 'image/png', 'image/gif'];
     // unit is assumed to be kb
-    private $default_max_file_size = 1000;
-    private $default_max_image_size = 500;
+    private $default_max_file_size = 10000;
+    private $default_max_image_size = 10000;
 
     /**
      * Upload an image/file and (for images) create thumbnail

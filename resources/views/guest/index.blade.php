@@ -50,7 +50,7 @@
 									<a href="#" target="_blank"></a>
 									<div class="header">
 										<a href="#" target="_blank"></a>
-										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title | cut:true:30:' ...' %}</a>
+										<a href="playapp/{% app.id %}/{% app.slug %}.html">{% app.title | cut:true:50:' ...' %}</a>
 									</div>
 									
 								</div>
@@ -83,6 +83,7 @@
   </div>
 
 			</div>
+
 
 @endsection
 

@@ -38,8 +38,8 @@ return [
     'files_url'             => '/files/',
     'files_startup_view'    => 'grid',
 
-    'max_image_size' => 500,
-    'max_file_size' => 1000,
+    'max_image_size' => 10000,
+    'max_file_size' => 10000,
 
     // available since v1.3.0
     'valid_image_mimetypes' => [

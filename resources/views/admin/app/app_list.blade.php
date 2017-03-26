@@ -68,7 +68,7 @@
                 @if ($i == $page)
                     {{ $i }}
                 @else
-                    <a href="/adminsites/app/list/{{ $i }}" > {{ $i }} </a>
+                    <a href="/adminsites/app/list/{{ $method }}/{{ $i }}" > {{ $i }} </a>
                 @endif
             
             @endfor

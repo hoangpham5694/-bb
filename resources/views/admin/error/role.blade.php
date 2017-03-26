@@ -14,6 +14,8 @@
     <div id="main">      
    
 	 Bạn không đủ quyền để vào khu vực này
+     <br>
+      <a href="{!! url('logout') !!}">Logout</a>
     </div>
     <div id="bottom">
         Copyright © 2016 BigBoom Team

@@ -27,7 +27,7 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=626608597450914";
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=719228948238299";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 $body = $("body");
@@ -35,6 +35,12 @@ $body = $("body");
 $(document).on({
     ajaxStart: function() { $body.addClass("loading");    },
      ajaxStop: function() { $body.removeClass("loading"); }    
+});
+$body.addClass("loading");
+$(window).bind("load", function() { 
+    // Your code here.
+    console.log("pageload");
+    $body.removeClass("loading");
 });
 
 </script>
@@ -86,7 +92,7 @@ $(document).on({
 	<div id="footer">
 		<div class="fa-footer container">
         <div class="footer-help pull-left">
-            <a href="//www.appnhe.com/about/">Về B-Boom</a>
+            <a >Về B-Boom</a>
         </div>
         <div class="footer-help pull-right">
             © Copyright by B-Boom Team
@@ -97,5 +103,15 @@ $(document).on({
     <i class="glyphicon glyphicon-menu-up"></i>
 </div>
 <div class="modal"><!-- Place at bottom of page --></div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96193349-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>

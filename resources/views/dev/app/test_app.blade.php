@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{!! asset('public/mh94_admin/templates/css/styledev.css')!!}" />
 	<meta name="csrf-token" content="{{ Session::token() }}"> 
 
-
+        <link rel    ="stylesheet" href="{!! asset('public/mh94_guest/css/bootstrap.min.css')!!}">
+        <link rel    ="stylesheet" href="{!! asset('public/mh94_guest/css/styleappnhe.css')!!}">
+        <script src  ="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>

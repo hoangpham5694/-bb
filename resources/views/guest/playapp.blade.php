@@ -1,6 +1,7 @@
 	@extends('guest.master1')
 	<?php $title = $data['title'] ?>
 	@section('title')
+	<meta property="og:image" content="{!! asset('public/mh94_upload/appimages')!!}/{!! $data['image']!!}" />
 <title>{{ $title }} - BBoom App</title>
 		<script type ="text/javascript" src=<?php echo asset('public/mh94_guest/js/lib/html2canvas.js') ; ?>> </script>
 
@@ -48,21 +49,7 @@
 						<input type="text" hidden value="{!! asset('public/')!!}" id="rooturl">
 
 					</form>
-					   <script type="text/javascript">
-        function resize_canvas(){
-            canvas = document.getElementById("canvas");
-            if (canvas.width  < window.innerWidth)
-            {
-                canvas.width  = window.innerWidth;
-            }
-
-            if (canvas.height < window.innerHeight)
-            {
-                canvas.height = window.innerHeight;
-            }
-        }
-    </script>
-										<script>
+							<script>
 					function sleep(milliseconds) {
 						var start = new Date().getTime();
 						for (var i = 0; i < 1e7; i++) {
@@ -77,6 +64,8 @@
 					
 					var appurl = "{!! $data['appurl'] !!}"
 					var API = "{!! asset('/')!!}";
+
+				
 					$(document).ready(function(){
 
 
@@ -87,6 +76,7 @@
 						$(".loading-game").hide();
 						$(".share-btn").hide();
 						$("#canvas-img").hide();
+						$(".canvasing").hide();
 						$(".viewBtn").click(function() {
 							filldata();
 							$(".begin-game").hide();
@@ -96,8 +86,8 @@
 							setTimeout(function(){
 								$(".loading-game").hide();
 								$(".game-result").show();
-								$body.addClass("loading");
-							
+							//	$body.addClass("loading");
+								$(".canvasing").show();
 								html2canvas($(".game-result"), {
 									
 									
@@ -147,12 +137,12 @@
 								$("#canvas-img").show();
 								$(".share-btn").show();
 								$(".title").hide();
-								$body.removeClass("loading");
-
+							//	$body.removeClass("loading");
+								$(".canvasing").hide();
 							});
 
     							
-							}, 3000);  
+							}, 2000);  
 
 							
 							
@@ -180,7 +170,9 @@
 									picname = '{!! asset('public/mh94_apps') !!}' +'/' + data;
 									console.log(picname);
 									$body.removeClass("loading");
+									
 									sharefb(picname);
+									//sharefb($("#img-result").attr("src"));
 
 								 },
 								error: function (data) {console.log(data); },
@@ -261,7 +253,7 @@
 										picture: picurl,
 										title: '{!! $data['title'] !!}',
 										description: '{!! $data['description'] !!}',
-										caption: 'B-BoomApp'
+										caption: 'BBoomApps.com'
 										
 										}, function(response){});
 	}
@@ -283,8 +275,14 @@
 
 						<div class="game-result">
 							{!! $data['html']!!}
+
 							{!! $data['script'] !!}	
+
 	 					</div>
+	 					<div class="canvasing">
+	 						<img src="{!! asset('public/mh94_guest/images/processbar.gif')!!}" alt="">
+	 					</div>
+	 					
 	 					<div id="canvas-img" onresize="resize_canvas()" >
 	 						<img id="img-result" src="" alt="">
 	 					</div>
@@ -305,10 +303,11 @@
 						</div>
 
 	 				</div>
-	 				<button  class="btn share-btn clearfix">Share kết quả lên tường</Button>
-	 				<div class="ads">
+	 					 				<div class="ads">
 	 					{!! $ads1['code'] !!}
 	 				</div>
+	 				<button  class="btn share-btn clearfix">Share kết quả lên tường</Button>
+
 	 				<div class="view-result">
 	 				@if(Session::has('user'))
 	 			

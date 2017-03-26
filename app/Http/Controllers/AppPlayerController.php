@@ -22,7 +22,7 @@ class AppPlayerController extends Controller
         
         $file = base64_decode( substr($request->canvasimg, strpos($request->canvasimg, ",")+1));
         $image = imagecreatefromstring($file);
-        $image = resize($image, 500, 300);
+            $image = resize($image, 560, 292);
         $folderName = '/mh94_apps/';
         if($request->session()->has('user')){
             $data  = $request->session()->get('user');
