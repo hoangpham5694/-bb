@@ -649,3 +649,10 @@ body.loading .modal {
 .viewBtn{
     width:100%;
 }
+.btn-login{
+    width:100%;
+    max-width: 500px;
+      overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

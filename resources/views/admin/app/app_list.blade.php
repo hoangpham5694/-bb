@@ -53,8 +53,8 @@
                      @endif
                 </td>
                 <td class="list_td aligncenter">
-                    <a href="edit/{{ $app["id"] }}"    ><img src="{!! asset('public/mh94_admin/templates/images/edit.png')!!}" /></a>&nbsp;&nbsp;&nbsp;
-                    <a href="delete/{{ $app['id'] }}" onclick="return xacnhanxoa('Bạn có chắc muốn xóa App này không');" ><img src="{!! asset('public/mh94_admin/templates/images/delete.png')!!}" /></a>
+                    <a href="{{ url('adminsites/app') }}/edit/{{ $app["id"] }}"    ><img src="{!! asset('public/mh94_admin/templates/images/edit.png')!!}" /></a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ url('adminsites/app') }}/delete/{{ $app['id'] }}" onclick="return xacnhanxoa('Bạn có chắc muốn xóa App này không');" ><img src="{!! asset('public/mh94_admin/templates/images/delete.png')!!}" /></a>
                 </td>
             </tr>
             @endforeach

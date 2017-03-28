@@ -12,7 +12,8 @@ class SocialController extends Controller
 {
      public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->scopes(['user_friends'])->redirect();
+      //  return Socialite::driver('facebook')->scopes(['user_friends'])->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
     /**
@@ -22,10 +23,10 @@ class SocialController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
-     //   $user = Socialite::driver('facebook')->stateless()->user();
+        $user = Socialite::driver('facebook')->stateless()->user();
         //  $user = Socialite::driver('facebook')->fields(['name','first_name','last_name', 'email', 'gender', 'verified', 'taggable_friends{name,last_name,first_name,picture}'])->user();
-         $user = Socialite::driver('facebook')->fields(['name','first_name','last_name', 'email', 'gender', 'verified'])->user();
-        //dd($user);
+      //   $user = Socialite::driver('facebook')->fields(['name','first_name','last_name', 'email', 'gender', 'verified'])->user();
+       // dd($user);
         // $user->token;
        // print_r($user);
 

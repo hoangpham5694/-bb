@@ -295,7 +295,7 @@
 	 							@if(Session::has('user'))
 	 								<button class="viewBtn" onclick="playgame();"  >Xem kết quả</button>
 								@else
-									<a class="btn clearfix" href="{!! url('facebook/redirect')!!}">
+									<a class="btn btn-login clearfix" href="{!! url('facebook/redirect')!!}">
 									<i class="fa fa-facebook-square"></i>	Đăng nhập để xem kết quả</a>
 	 							@endif
 	 					
@@ -315,8 +315,8 @@
 						
 
 					@else
-						<a class="btn clearfix" href="{!! url('facebook/redirect')!!}">
-							<i class="fa fa-facebook-square"></i> Đăng nhập để xem kết quả</a>
+						<a class="btn btn-login clearfix" href="{!! url('facebook/redirect')!!}">
+							<i class="fa fa-facebook-square"></i> Đăng nhập để xem kết quả </a>
 	 				@endif
 	 					
 	 				</div>
