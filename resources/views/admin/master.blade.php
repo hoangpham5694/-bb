@@ -26,7 +26,8 @@
 		<table width="100%">
 			<tr>
 				<td>
-					<a href="{!! url('adminsites')!!}">Trang chính</a> | <a href="{!! url('adminsites/user')!!}">Quản lý user</a> | <a href="{!! url('adminsites/ads/list')!!}">Quản lý Ads</a> | <a href="{!! url('adminsites/app/list')!!}">Quản lý app</a>
+					<a href="{!! url('adminsites')!!}">Trang chính</a> | <a href="{!! url('adminsites/user')!!}">Quản lý user</a> | <a href="{!! url('adminsites/ads/list')!!}">Quản lý Ads</a> | <a href="{!! url('adminsites/app/list')!!}">Quản lý app</a> |
+					<a href="{!! url('adminsites/history/list')!!}">Xem Log</a>
 					| <a href="{!! url('laravel-filemanager')!!}">Quản lý file</a>
 				</td>
 				<td align="right">

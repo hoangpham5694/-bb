@@ -51,8 +51,10 @@ Route::group(['middleware' => 'isroleadmin'], function () {
 			Route::get('add',['as'=> 'getUserAdd', 'uses' => 'UserController@getUserAdd']);
 			Route::post('add',['as'=> 'postUserAdd', 'uses' => 'UserController@postUserAdd']);
 		});
-		Route::group(['prefix' => 'category'], function(){
-			Route::get('add',['as' => 'getAdd','uses'=>'CateController@getAdd']);
+		Route::group(['prefix' => 'history'], function(){
+			Route::get('list/{key?}/{page?}',['as' => 'getHistoryList','uses'=>'LoginHistoryController@getListLoginHistory'])->where('page','[0-9]+');
+			Route::get('detail/{id}',['as' => 'getHistoryDetail','uses'=>'LoginHistoryController@getDetailLoginHistory']);
+
 		});
 		Route::group(['prefix' => 'app'], function(){
 

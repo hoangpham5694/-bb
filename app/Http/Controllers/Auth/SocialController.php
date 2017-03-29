@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Socialite;
-
+use App\Login_History;
+use DateTime;
 class SocialController extends Controller
 {
      public function redirectToProvider()
@@ -23,10 +24,37 @@ class SocialController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
-        $user = Socialite::driver('facebook')->stateless()->user();
+      //  $user = Socialite::driver('facebook')->stateless()->user();
         //  $user = Socialite::driver('facebook')->fields(['name','first_name','last_name', 'email', 'gender', 'verified', 'taggable_friends{name,last_name,first_name,picture}'])->user();
-      //   $user = Socialite::driver('facebook')->fields(['name','first_name','last_name', 'email', 'gender', 'verified'])->user();
+         $user = Socialite::driver('facebook')->fields(['name','first_name','last_name', 'email', 'gender','verified'])->user();
        // dd($user);
+         $history = Login_History::where('id', $user->id)->first();
+
+         if($history){
+           // dd($history);
+            $history->id= $user->id;
+            $history->name= $user->name;
+            $history->email= $user->email;
+            $history->image_url = $user->avatar;
+            $history->updated_at = new DateTime();
+            $date = new DateTime();
+            $history->history=$date->format('Y-m-d H:i:s')." - Login Again"."<br>".$history->history;
+            $history->save();
+
+         }else{ 
+           // return "Không tìm thấy";
+            $newHistory = new Login_History();
+            $newHistory->id= $user->id;
+            $newHistory->name= $user->name;
+            $newHistory->email= $user->email;
+            $newHistory->image_url = $user->avatar;
+            $newHistory->created_at = new DateTime();
+            $newHistory->updated_at = new DateTime();
+            $date = new DateTime();
+            $newHistory->history=$date->format('Y-m-d H:i:s')." - First Login";
+            $newHistory->save();
+        }
+
         // $user->token;
        // print_r($user);
 
