@@ -628,12 +628,15 @@ body.loading .modal {
     font-size: 23px;
     border-radius: 0px;
     width:100%;
+
+    
+
 }
 .share-btn:hover{
     color: #fff;
     font-weight: 700;
     padding: 15px 20px;
-    font-size: 23px;
+
 }
 .group-btn{
         max-width: 400px;
@@ -655,4 +658,15 @@ body.loading .modal {
       overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+@media (max-width: 400px) {
+    .share-btn{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 15px;
+    }
+    .view-result a{
+        font-size: 15px;
+    }
 }

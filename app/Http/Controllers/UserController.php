@@ -59,7 +59,7 @@ class UserController extends Controller
         $user = new user();
         $user->username = $request->txtUsername;
         $user->name = $request->txtName;
-        $user->password = $request->txtPass;
+        $user->password = Hash::make($request->txtPass);
         $user->role = $request->selectRole;
         $user->save();
         return redirect()->route('getUserList')->with(['flash_level'=>'result_msg','flash_message' => 'Thêm thành viên thành công'] );
