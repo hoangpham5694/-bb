@@ -259,6 +259,14 @@ i.glyphicon.glyphicon-calendar, .glyphicon-heart, .glyphicon-comment,.glyphicon-
     z-index: 9999;
     display: none;
 }
+    .main{
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .container{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 
 }
 @media (min-width: 768px){

@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Http\Component\GenerateImage;
 use Illuminate\Http\Response;
 use DateTime,File;
+use App\Login_History;
+//use App\App;
 class AppPlayerController extends Controller
 {
 
@@ -40,10 +42,32 @@ class AppPlayerController extends Controller
 $imgFileName = $destinationPath.$safeName;
 SaveImage($image,$imgFileName);
 
+         $history = Login_History::where('id', $data->id)->first();
+
+         if($history){
+           // dd($history);
+            
+            $history->name= $data->name;
+            $history->email= $data->email;
+            $history->image_url = $data->avatar;
+            $history->updated_at = new DateTime();
+            $date = new DateTime();
+            $history->history=$date->format('Y-m-d H:i:s')." - Click share - ".$request->title."<br>".$history->history;
+            $history->save();
+
+         }
         return $safeName;
            
         }
-
+    /*    $app = App::where('id', $request->id)->first();
+        if($app){
+            if($app->share != null){
+                $app->share +=1;
+            }else{
+                $app->share =1;
+            }
+        }
+        */
     }
 
     public function getResponseTenCuaBan2(Request $request){

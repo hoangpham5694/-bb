@@ -13,7 +13,7 @@
 				<td class="id_col">ID</td>
 				<td>Tiêu Đề</td>
                 <td>Người tạo</td>
-				<td>URL</td>
+				<td>Lượt xem</td>
 				<td>Thời Gian</td>
                 <td>Trạng thái</td>
 				<td class="action_col">Quản lý?</td>
@@ -26,7 +26,7 @@
                       <a href="{{ url('devsites/app/testappid') }}/{{ $app['id'] }}" target="_blank"> {!! $app["title"] !!}</td></a>
                 </td>
                 <td class="list_td aligncenter">{!! $app["username"] !!}</td>
-                <td class="list_td aligncenter">{!! $app["appurl"] !!}</td>
+                <td class="list_td aligncenter">{!! $app["view"] !!}</td>
                 <td class="list_td aligncenter">
                     <?php \Carbon\Carbon::setLocale('vi');?>
                     {!! \Carbon\Carbon::createFromTimeStamp(strtotime($app["created_at"]))->diffForHumans() !!}

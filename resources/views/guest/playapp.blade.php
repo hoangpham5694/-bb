@@ -162,6 +162,7 @@
 									'contentType': 'application/upload',
 								},
 								data:{ '_token': CSRF_TOKEN,
+								appid: "{!! $data['id']!!}"
 								title: "{!! $data['slug']!!}",
 								canvasimg : dataURL },
 								

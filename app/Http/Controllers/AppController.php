@@ -20,11 +20,11 @@ class AppController extends Controller
         $numPages = $totalApp / $numberRecord +1;
         switch($method){
             case 'all':
-                $data= App::Join('users','users.id','=','apps.create_by')->select('apps.id','apps.title','apps.image','apps.appurl','apps.created_at','apps.create_by','apps.status','users.username')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+                $data= App::Join('users','users.id','=','apps.create_by')->select('apps.id','apps.title','apps.image','apps.appurl','apps.view','apps.created_at','apps.create_by','apps.status','users.username')->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
 
             break;
             default:
-                   $data= App::Join('users','users.id','=','apps.create_by')->select('apps.id','apps.title','apps.image','apps.appurl','apps.created_at','apps.create_by','apps.status','users.username')->where('status','=',$method)->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
+                   $data= App::Join('users','users.id','=','apps.create_by')->select('apps.id','apps.title','apps.image','apps.appurl','apps.view','apps.created_at','apps.create_by','apps.status','users.username')->where('status','=',$method)->orderBy('id','DESC')->limit($numberRecord)->offset($vitri)->get()->toArray();
 
             break;
         }

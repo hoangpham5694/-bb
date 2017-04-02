@@ -32,7 +32,7 @@ class SocialController extends Controller
 
          if($history){
            // dd($history);
-            $history->id= $user->id;
+            
             $history->name= $user->name;
             $history->email= $user->email;
             $history->image_url = $user->avatar;
