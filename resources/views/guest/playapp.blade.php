@@ -4,7 +4,7 @@
 	<meta property="og:image" content="{!! asset('public/mh94_upload/appimages')!!}/{!! $data['image']!!}" />
 <title>{{ $title }} - BBoom App</title>
 		<script type ="text/javascript" src=<?php echo asset('public/mh94_guest/js/lib/html2canvas.js') ; ?>> </script>
-
+{!! $ads5['code'] !!}
 <style>
 	
 	
@@ -162,7 +162,7 @@
 									'contentType': 'application/upload',
 								},
 								data:{ '_token': CSRF_TOKEN,
-								appid: "{!! $data['id']!!}"
+								appid: "{!! $data['id']!!}",
 								title: "{!! $data['slug']!!}",
 								canvasimg : dataURL },
 								

@@ -77,9 +77,10 @@ class AppController extends Controller
         $ads1 = Ads_Code::findOrFail(1)->toArray();
         $ads3 = Ads_Code::findOrFail(3)->toArray();
         $ads4 = Ads_Code::findOrFail(4)->toArray();
+        $ads5 = Ads_Code::findOrFail(5)->toArray();
         $backurl= 'playapp/'.$id.'/'.$app['slug'].'.html';
         $request->session()->put('backurl', $backurl);
-        return view('guest.playapp',["data" => $app,"data" => $app,"ads1" => $ads1,"ads3"=> $ads3,"ads4"=> $ads4]);
+        return view('guest.playapp',["data" => $app,"data" => $app,"ads1" => $ads1,"ads3"=> $ads3,"ads4"=> $ads4, "ads5"=>$ads5]);
     }
     public function getAppAdd(){
     	return view('dev.app.app_add');
